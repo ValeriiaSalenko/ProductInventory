@@ -1,0 +1,55 @@
+page-registration{
+
+  .backPage{
+    background: #5ED0BD	;
+
+  }
+  .pro-header {
+    display: flex;
+    justify-content: center;
+  }
+  ion-header{
+    min-height: 50px;
+    width: 100%;
+    background: #488aff;
+  }
+  ion-header ul {
+    display: inline-block;
+  }
+  ion-header ul li{
+    display: inline-block;
+    padding: 0 10px;
+    list-style-type:none;
+  }
+  ion-header ul li button{
+    cursor:pointer;
+    color: #222222;
+  }
+
+  .fix{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .butSign{
+    width:135px;
+    margin:0 16px;
+  }
+
+
+  .butRegistration{
+    width:135px;
+    color: #222222;
+    background-color: snow;
+
+  }
+
+}
