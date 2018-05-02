@@ -1,22 +1,22 @@
 
 
-<ion-content padding class="backPage flex" row>
+<ion-content  padding class="backPage " row>
 
-  <ion-list row  class="fix">
+  <ion-list row  class="fix formLog">
 
-    <ion-item  col-lg-3 col-md-6>
+    <ion-item  col-lg-4 col-md-6 class="radTop">
       <ion-label floating>Email</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input name="myemail" type="text"></ion-input>
     </ion-item>
 
-    <ion-item col-lg-3 col-md-6 >
+    <ion-item col-lg-4 col-md-6 >
       <ion-label floating>Password</ion-label>
       <ion-input type="password"></ion-input>
     </ion-item>
 
-    <ion-item col-lg-3 col-md-6 class="fix">
-      <button color="danger" class="butSign"  col-lg-6 col-md-6 col-sm-6 ion-button icon-right >Sign in</button>
-      <button color="light" class="butRegistration" col-lg-6 col-sm-6 col-md-6  ion-button icon-right (click)="itemTapped()">Sign up</button>
+    <ion-item col-lg-4 col-md-6 class="fix radEnd">
+      <button ion-button color="danger" class="butSign" col-lg-6 icon-right >Sign in</button>
+      <button ion-button color="dark" class="butRegistration" col-lg-6 icon-right (click)="itemTapped()">Sign up</button>
     </ion-item>
 
   </ion-list>

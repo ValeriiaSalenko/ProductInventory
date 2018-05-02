@@ -1,18 +1,26 @@
 page-login{
 
   .backPage{
-  background: #5ED0BD	;
+  background: #778899	;
   }
 
   .pro-header {
     display: flex;
     justify-content: center;
   }
-  ion-header{
+  .radTop{
+    border-radius: 10px 10px 0 0;
+  }
+
+  .radEnd{
+    border-radius: 0 0 10px 10px;
+  }
+  ion-app ion-content .scroll-content {
     min-height: 50px;
     width: 100%;
     background: #488aff;
   }
+
   ion-header ul {
     display: inline-block;
   }
@@ -33,22 +41,44 @@ page-login{
     align-content: center;
   }
 
-  .flex {
+
+  .butSign{
+    padding: 10px;
+    width:135px;
+    margin:0 16px;
+    border-radius: 10px;
+}
+
+  .butRegistration{
+    color: #f4f4f4;
+    width:135px;
+    border-radius: 10px;
+
+  }
+  .formLog {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .item-md{
+    padding: 0;
+  }
+  .item-inner{
+    padding: 0 !important;
+  }
+  ion-content .scroll-content{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .butSign{
-    width:135px;
-    margin:0 16px;
-}
 
-
-  .butRegistration{
-    width:135px;
-    color: #222222;
-    background-color: snow;
-
+  .label-md{
+    margin-right: 0;
+  }
+ .butSign{
+    margin: 0;
   }
 
 }

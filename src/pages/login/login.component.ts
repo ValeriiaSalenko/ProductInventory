@@ -17,10 +17,10 @@ export class LoginPage {
   constructor(public navCtrl: NavController) {
 
   }
-
   itemTapped(event, item) {
     this.navCtrl.push(RegistrationPage, {
       item: item
     });
   }
+  
 }
