@@ -1,14 +1,17 @@
-page-registration{
-
-  .backPage{
-    background: #5ED0BD	;
-
+page-registration {
+  //.padd{
+  //  padding: 15px;
+  //  background-color: #fff;
+  //  border-radius: 10px;
+  //}
+  .backPage {
+    background: #778899;
   }
   .pro-header {
     display: flex;
     justify-content: center;
   }
-  ion-header{
+  ion-header {
     min-height: 50px;
     width: 100%;
     background: #488aff;
@@ -16,17 +19,33 @@ page-registration{
   ion-header ul {
     display: inline-block;
   }
-  ion-header ul li{
+  ion-header ul li {
     display: inline-block;
     padding: 0 10px;
-    list-style-type:none;
+    list-style-type: none;
   }
-  ion-header ul li button{
-    cursor:pointer;
+  ion-header ul li button {
+    cursor: pointer;
     color: #222222;
   }
+  ion-content .scroll-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item-md.item-block .item-inner{
+    padding-right: 0;
+  }
 
-  .fix{
+  .radTop {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .radEnd {
+    border-radius: 0 0 10px 10px;
+  }
+
+  .fix {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,17 +58,28 @@ page-registration{
     justify-content: center;
   }
 
-  .butSign{
-    width:135px;
-    margin:0 16px;
+  .butSign {
+    width: 135px;
+    margin: 0 16px;
+    border-radius: 10px;
   }
 
-
-  .butRegistration{
-    width:135px;
-    color: #222222;
-    background-color: snow;
-
+  .butRegistration {
+    width: 135px;
+    color: #f4f4f4;
+    border-radius: 10px;
   }
+
+  .item-md {
+    padding: 0;
+  }
+  ion-item .item-inner{
+    padding: 0;
+  }
+
+  .label-md{
+    margin-right: 0;
+  }
+
 
 }
