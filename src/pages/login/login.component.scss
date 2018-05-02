@@ -1,7 +1,8 @@
 page-login{
 
   .backPage{
-  background: #778899	;
+    background: url("http://fallout-shelter-faq.ru/wp-content/uploads/2015/09/fallout-shelter-zachem-nuzhen-sklad-2.jpg") no-repeat;
+    background-size: 100%;
   }
 
   .pro-header {
@@ -36,6 +37,7 @@ page-login{
 
   .fix{
     display: flex;
+    width:1000px;
     flex-direction: column;
     align-items: center;
     align-content: center;
@@ -43,30 +45,57 @@ page-login{
 
 
   .butSign{
+    margin-left: 7px !important;
     padding: 10px;
     width:135px;
-    margin:0 16px;
     border-radius: 10px;
+    background-color: #fff;
+    color: #FF9700;
+    border: 2px solid  #FF9700;
+    box-shadow: none;
 }
-
-  .butRegistration{
-    color: #f4f4f4;
+  .butSign:hover{
+    margin-left: 7px !important;
+    padding: 10px;
     width:135px;
     border-radius: 10px;
+    background-color: #FF9700 !important;
+    color: #f4f4f4;
+    box-shadow: none;
+  }
 
+
+  .butRegistration{
+      margin: 0 0 0 25px;
+      color: #222222;
+      width:135px;
+      border-radius: 10px;
+      background-color: #fff;
+      border: 2px solid #222222;
+      box-shadow: none;
+  }
+  .butRegistration:hover{
+      margin: 0 0 0 25px;
+      box-shadow: none;
+      width:135px;
+      border-radius: 10px;
+      background-color: #222222 !important;
+      color: #f4f4f4 !important;
   }
   .formLog {
     padding: 10px;
     width: 100%;
     border-radius: 5px;
   }
+  .label-md{
+    padding-left: 10px;
+    width: 100%;
+  }
 
   .item-md{
     padding: 0;
   }
-  .item-inner{
-    padding: 0 !important;
-  }
+
   ion-content .scroll-content{
     width: 100%;
     display: flex;

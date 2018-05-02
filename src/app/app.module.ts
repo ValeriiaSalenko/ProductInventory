@@ -10,13 +10,14 @@ import { LoginPage } from '../pages/login/login.component';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
     RegistrationPage,
-    LoginPage
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     RegistrationPage,
-    LoginPage
+    LoginPage,
   ],
   providers: [
     SplashScreen,
