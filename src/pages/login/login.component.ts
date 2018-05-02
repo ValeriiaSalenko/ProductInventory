@@ -28,7 +28,31 @@ export class LoginPage {
     });
   }
   signIn(){
-    console.log(this.email.value, this.password.value);
+    if(!!this.email.value) {
+      if (!!this.password.value) {
+        let users = JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+        for (let i = 0; i < users.length; i++) {
+          if (users[i].email == this.email.value) {
+            var userF = true;
+            if (users[i].password == this.password.value) {
+              alert("Login confimed!");
+              return;
+            } else {
+              alert("Wrong password!!!");
+              return;
+            }
+          }
+        }
+        if(!userF) {
+          alert("User not found!");
+        }
+      } else {
+        alert("Enter password!");
+      }
+    } else {
+      alert("Enter e-mail!");
+    }
   }
 
 }
