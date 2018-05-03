@@ -1,11 +1,14 @@
 page-registration {
-  //.list-md {
-  //  .item-block {
-  //    .item-inner {
-  //      border-bottom: none;
-  //    }
-  //  }
-  //}
+  .cursorPad{
+    padding-left: 10px;
+    width: 100%;
+  }
+
+  .errorMess {
+    .item-inner {
+      border-bottom: none !important;
+    }
+  }
   .err{
     color: #f53d3d !important;
     font: 400 16px Roboto,RobotoDraft,Helvetica,Arial,sans-serif !important;

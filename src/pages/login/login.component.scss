@@ -1,15 +1,18 @@
 page-login {
+  .cursorPad{
+    padding-left: 10px;
+    width: 100%;
+  }
+
   .err{
     color: #f53d3d !important;
     font: 400 16px Roboto,RobotoDraft,Helvetica,Arial,sans-serif !important;
   }
-    //.list-md {
-    //  .item-block:nth-child(2n) {
-    //    .item-inner {
-    //        border-bottom: none !important;
-    //    }
-    //  }
-    //}
+  .errorMess {
+    .item-inner {
+      border-bottom: none !important;
+    }
+  }
   .backPage {
     background: url("http://fallout-shelter-faq.ru/wp-content/uploads/2015/09/fallout-shelter-zachem-nuzhen-sklad-2.jpg") no-repeat;
     background-size: 100%;
