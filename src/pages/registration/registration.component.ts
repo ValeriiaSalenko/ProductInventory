@@ -79,6 +79,7 @@ export class RegistrationPage {
       localStorage.setItem('itemsArray', JSON.stringify(oldItems));
 
       alert("Thank you for registration!");
+      console.log('test');
     }
   }
   //alert("Passwords do not match!");
