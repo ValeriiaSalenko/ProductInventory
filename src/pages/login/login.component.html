@@ -6,16 +6,32 @@
 
     <ion-item  col-lg-4 col-md-6 class="radTop">
       <ion-label floating>Email</ion-label>
-      <ion-input name="myemail" type="text"></ion-input>
+      <ion-input name="myemail" type="text" #email></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="errorEmail1" col-lg-4 col-md-6>
+      <p class="err">User not found!</p>
+    </ion-item>
+
+    <ion-item *ngIf="errorEmail2" col-lg-4 col-md-6>
+      <p class="err">Enter the e-mail, please</p>
     </ion-item>
 
     <ion-item col-lg-4 col-md-6 >
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" #password></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="errorPass1" col-lg-4 col-md-6>
+      <p class="err">Enter password!</p>
+    </ion-item>
+
+    <ion-item *ngIf="errorPass2" col-lg-4 col-md-6>
+      <p class="err">Wrong password!!!</p>
     </ion-item>
 
     <ion-item col-lg-4 col-md-6 class="fix radEnd">
-      <button ion-button  class="butSign" col-lg-6 icon-right>Sign in</button>
+      <button ion-button  class="butSign" col-lg-6 icon-right (click)="signIn() ">Sign in</button>
       <button ion-button  class="butRegistration" col-lg-6 icon-right (click)="itemTapped()">Sign up</button>
     </ion-item>
 
