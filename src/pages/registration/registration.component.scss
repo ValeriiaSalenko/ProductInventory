@@ -3,10 +3,25 @@ page-registration {
     padding-left: 10px;
     width: 100%;
   }
-
+  .fix {
+    .item-md {
+      padding: 5px;
+    }
+  }
+  .item-inner {
+    .input-wrapper{
+      .label-md[floating]{
+        margin-top: 3px;
+      }
+    }
+  }
   .errorMess {
     .item-inner {
       border-bottom: none !important;
+      .input-wrapper{
+        max-height: 25px !important;
+
+      }
     }
   }
   .err{
