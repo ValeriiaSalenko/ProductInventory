@@ -1,18 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import {RegistrationPage} from "../registration/registration.component";
 
 
 @IonicPage({
-  name: 'login-ionic',
-  segment: 'login-ionic'
+  name: 'login',
+  segment: 'login'
 })
-
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.component.html'
 })
+
 export class LoginPage {
   @ViewChild('email') email;
   @ViewChild('password') password;
@@ -20,11 +19,12 @@ export class LoginPage {
   constructor(public navCtrl: NavController) {
 
   }
-  itemTapped(event, item) {
-    this.navCtrl.push(RegistrationPage, {
-      item: item
-    });
+
+  itemTapped() {
+    this.navCtrl.push('registration');
   }
 
-
+  itemMain() {
+    this.navCtrl.push('main');
+  }
 }

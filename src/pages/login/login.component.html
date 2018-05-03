@@ -1,21 +1,19 @@
-
-
 <ion-content  padding class="backPage " row>
 
   <ion-list row  class="fix">
 
     <ion-item  col-lg-4 col-md-6 class="radTop">
       <ion-label floating>Email</ion-label>
-      <ion-input name="myemail" type="text"></ion-input>
+      <ion-input class="cursorPad" name="myemail" type="text"></ion-input>
     </ion-item>
 
     <ion-item col-lg-4 col-md-6 >
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input class="cursorPad" type="password"></ion-input>
     </ion-item>
 
     <ion-item col-lg-4 col-md-6 class="fix radEnd">
-      <button ion-button  class="butSign" col-lg-6 icon-right>Sign in</button>
+      <button ion-button  class="butSign" col-lg-6 icon-right (click)="itemMain()">Sign in</button>
       <button ion-button  class="butRegistration" col-lg-6 icon-right (click)="itemTapped()">Sign up</button>
     </ion-item>
 
