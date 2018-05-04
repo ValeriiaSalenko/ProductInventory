@@ -2,8 +2,14 @@ main-component {
 
   .toolbar-background {
       background-color:  #e28c01;
-  }
 
+  }
+  .dFlexB{
+    display: flex;
+  }
+  .menu{
+    justify-content: flex-end;
+  }
   .backPage{
       background-color: #fff0bc;
   }
@@ -14,6 +20,14 @@ main-component {
 
   .back-button {
       display: none !important;
+  }
+  .menuItem{
+      display: inline-block;
+      background-color:  #e28c01;
+      cursor: pointer;
+  }
+  .item-inner{
+      border-bottom: none !important;
   }
 
 }
