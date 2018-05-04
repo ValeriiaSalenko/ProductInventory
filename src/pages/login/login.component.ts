@@ -1,17 +1,18 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-
+import { RegistrationPage } from '../registration/registration.component';
+import { MainPage } from '../main/main.component';
 
 @IonicPage({
-  name: 'login',
-  segment: 'login'
+  name: 'login-ionic',
+  segment: 'login-ionic'
 })
+
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.component.html'
 })
-
 export class LoginPage {
   @ViewChild('email') email;
   @ViewChild('password') password;
@@ -24,12 +25,11 @@ export class LoginPage {
   constructor(public navCtrl: NavController) {
 
   }
-  itemTapped() {
-    this.navCtrl.push('registration');
-  }
 
-  itemMain() {
-    this.navCtrl.push('main');
+  itemTapped(event, item) {
+    this.navCtrl.push(RegistrationPage, {
+      item: item
+    });
   }
 
   signIn() {
@@ -67,6 +67,7 @@ export class LoginPage {
         if (users[i].email == this.email.value) {
           if (users[i].password == this.password.value) {
             alert("Login confimed!");
+            this.navCtrl.push(MainPage);
             return;
           } else {
             this.errorPass2 = true;
