@@ -1,17 +1,17 @@
 <ion-header class="interfaceHeader">
-  <ion-navbar>
-    <!--<ion-tabs>-->
-      <!--<ion-tab  [root]="tab1Root" tabTitle="About" ></ion-tab>-->
-      <!--<ion-tab  [root]="tab2Root" tabTitle="Contact"></ion-tab>-->
-      <!--<ion-tab  [root]="tab3Root" tabTitle="Sign Out" ></ion-tab>-->
-    <!--</ion-tabs>-->
+  <ion-navbar class="intNav">
+    <ion-list col-lg-1 class="intList" (click)="itemTapped()" >Sign Out </ion-list>
+    <ion-list col-lg-1 class="intList" (click)="itemContact()">Contact</ion-list>
+    <ion-list col-lg-1 class="intList" (click)="itemAbout()" >About</ion-list>
+    <ion-list col-lg-1 class="intList" (click)="itemMain()" >Main</ion-list>
   </ion-navbar>
 </ion-header>
-
 <ion-content  padding class="backPage" row>
 
 
 </ion-content>
-
-
-
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="intFooter">@2018 ProductInventory</ion-title>
+  </ion-toolbar>
+</ion-footer>

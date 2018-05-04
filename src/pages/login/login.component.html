@@ -20,11 +20,6 @@
       <ion-input class="cursorPad" type="password"></ion-input>
     </ion-item>
 
-    <ion-item col-lg-4 col-md-6 class="fix radEnd">
-      <button ion-button  class="butSign" col-lg-6 icon-right (click)="itemMain()">Sign in</button>
-      <ion-input class="cursorPad" type="password" #password></ion-input>
-    </ion-item>
-
     <ion-item *ngIf="errorPass1" col-lg-4 col-md-6 class="errorMess">
       <p class="err">Enter password!</p>
     </ion-item>
@@ -34,7 +29,7 @@
     </ion-item>
 
     <ion-item col-lg-4 col-md-6 class="fix radEnd">
-      <button ion-button  class="butSign" col-lg-6 icon-right (click)="signIn() ">Sign in</button>
+      <button ion-button  class="butSign" col-lg-6 icon-right (click)="itemMain()" > Sign in </button>
       <button ion-button  class="butRegistration" col-lg-6 icon-right (click)="itemTapped()">Sign up</button>
     </ion-item>
 
