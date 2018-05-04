@@ -4,10 +4,6 @@ page-login {
     width: 100%;
   }
 
-  .backPage {
-    background: url("http://fallout-shelter-faq.ru/wp-content/uploads/2015/09/fallout-shelter-zachem-nuzhen-sklad-2.jpg") no-repeat;
-    background-size: 100%;
-  }
   .err{
     color: #f53d3d !important;
     font: 400 16px Roboto,RobotoDraft,Helvetica,Arial,sans-serif !important;
@@ -38,62 +34,62 @@ page-login {
   }
 
   .pro-header {
-      display: flex;
-      justify-content: center;
+    display: flex;
+    justify-content: center;
   }
   .radTop{
-      border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
   }
 
   .radEnd{
-      border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
   }
   ion-app ion-content .scroll-content {
-      min-height: 50px;
-      width: 100%;
-      background: #488aff;
+    min-height: 50px;
+    width: 100%;
+    background: #488aff;
   }
 
   ion-header ul {
-      display: inline-block;
+    display: inline-block;
   }
   ion-header ul li{
-      display: inline-block;
-      padding: 0 10px;
-      list-style-type:none;
+    display: inline-block;
+    padding: 0 10px;
+    list-style-type:none;
   }
   ion-header ul li button{
-      cursor:pointer;
-      color: #222222;
+    cursor:pointer;
+    color: #222222;
   }
 
   .fix{
-      display: flex;
-      width:1000px;
-      flex-direction: column;
-      align-items: center;
-      align-content: center;
+    display: flex;
+    width:1000px;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
   }
 
 
   .butSign{
-      margin-left: 7px !important;
-      padding: 10px;
-      width:135px;
-      border-radius: 10px;
-      background-color: #fff;
-      color: #FF9700;
-      border: 2px solid  #FF9700;
-      box-shadow: none;
+    margin-left: 7px !important;
+    padding: 10px;
+    width:135px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #FF9700;
+    border: 2px solid  #FF9700;
+    box-shadow: none;
 }
   .butSign:hover{
-      margin-left: 7px !important;
-      padding: 10px;
-      width:135px;
-      border-radius: 10px;
-      background-color: #FF9700 !important;
-      color: #f4f4f4;
-      box-shadow: none;
+    margin-left: 7px !important;
+    padding: 10px;
+    width:135px;
+    border-radius: 10px;
+    background-color: #FF9700 !important;
+    color: #f4f4f4;
+    box-shadow: none;
   }
 
 
@@ -114,38 +110,32 @@ page-login {
       background-color: #222222 !important;
       color: #f4f4f4 !important;
   }
-  .formLog{
-      padding: 10px;
-      width: 100%;
-      border-radius: 5px;
+  .formLog {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
   }
   .label-md{
-      padding-left: 10px;
-      width: 100%;
-  }
-
-  .item-md{
-      padding: 0;
-  }
-
-  .cursorPad{
     padding-left: 10px;
     width: 100%;
   }
 
+  .item-md{
+    padding: 0;
+  }
+
   ion-content .scroll-content{
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .label-md{
-      margin-right: 0;
+    margin-right: 0;
   }
-
-  .butSign{
-      margin: 0;
+ .butSign{
+    margin: 0;
   }
 
 }
