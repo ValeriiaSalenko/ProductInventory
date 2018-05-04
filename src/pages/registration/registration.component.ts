@@ -1,11 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-
-
+import { LoginPage } from "../login/login.component";
 
 @IonicPage({
-  name: 'registration',
-  segment: 'registration'
+  name: 'registration-ionic',
+  segment: 'registration-ionic'
 })
 
 
@@ -30,13 +29,12 @@ export class RegistrationPage {
 
   }
 
-  itemTapped() {
-    this.navCtrl.push('login');
+  itemTapped(event, item) {
+    this.navCtrl.push(LoginPage, {
+      item: item
+    });
   }
 
-  itemMain() {
-    this.navCtrl.push('main');
-  }
   regMe() {
     this.errorEmail1 = false;
     this.errorEmail2 = false;
@@ -79,7 +77,6 @@ export class RegistrationPage {
       localStorage.setItem('itemsArray', JSON.stringify(oldItems));
 
       alert("Thank you for registration!");
-      console.log('test');
     }
   }
   //alert("Passwords do not match!");
@@ -90,3 +87,5 @@ export class RegistrationPage {
   //   console.log(mass[i].email + ":" + mass[i].password);
   // }
 }
+
+
