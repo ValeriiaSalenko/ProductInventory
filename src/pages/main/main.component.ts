@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
+import { List } from 'ionic-angular';
 
 @IonicPage({
   name: 'main',
   segment: 'main'
 })
-
 
 @Component({
   selector: 'main-component',
@@ -13,9 +13,24 @@ import { NavController, IonicPage } from 'ionic-angular';
 })
 
 export class MainPage {
+  @ViewChild(List) list: List;
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
 
   }
+
+  itemAbout() {
+    this.navCtrl.push('about');
+  }
+  itemContact() {
+    this.navCtrl.push('contact');
+  }
+  itemTapped() {
+    this.navCtrl.push('login');
+  }
+  itemMain() {
+    this.navCtrl.push('main');
+  }
+
 
 }
