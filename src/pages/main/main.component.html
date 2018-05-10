@@ -6,12 +6,182 @@
     <ion-list col-lg-1 class="intList" (click)="itemMain()" >Main</ion-list>
   </ion-navbar>
 </ion-header>
+
 <ion-content  padding class="backPage" row>
 
+  <ion-grid class="productTable" col-10>
+
+    <ion-row>
+      <ion-col col-1>
+        №
+        <div class="ico-level-1">
+          <div class="ico-level-2" (click)="sortCol('Number', true)">
+            <ion-icon name="md-arrow-round-up"></ion-icon>
+          </div>
+          <div class="ico-level-2" (click)="sortCol('Number', false)">
+            <ion-icon name="md-arrow-round-down"> </ion-icon>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        Name
+        <div class="ico-level-1">
+          <div class="ico-level-2" (click)="sortCol('Name', true)">
+            <ion-icon name="md-arrow-round-up"></ion-icon>
+          </div>
+          <div class="ico-level-2" (click)="sortCol('Name', false)">
+            <ion-icon name="md-arrow-round-down"> </ion-icon>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        Created Date
+        <div class="ico-level-1">
+          <div class="ico-level-2" (click)="sortCol('CrDate', true)">
+            <ion-icon name="md-arrow-round-up"></ion-icon>
+          </div>
+          <div class="ico-level-2" (click)="sortCol('CrDate', false)">
+            <ion-icon name="md-arrow-round-down"> </ion-icon>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        Expire date
+        <div class="ico-level-1">
+          <div class="ico-level-2" (click)="sortCol('ExpDate', true)">
+            <ion-icon name="md-arrow-round-up"></ion-icon>
+          </div>
+          <div class="ico-level-2" (click)="sortCol('ExpDate', false)">
+            <ion-icon name="md-arrow-round-down"> </ion-icon>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        Price
+        <div class="ico-level-1">
+          <div class="ico-level-2" (click)="sortCol('Price', true)">
+            <ion-icon name="md-arrow-round-up"></ion-icon>
+          </div>
+          <div class="ico-level-2" (click)="sortCol('Price', false)">
+            <ion-icon name="md-arrow-round-down"> </ion-icon>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        Who created
+        <div class="ico-level-1">
+          <div class="ico-level-2" (click)="sortCol('WhoCrt', true)">
+            <ion-icon name="md-arrow-round-up"></ion-icon>
+          </div>
+          <div class="ico-level-2" (click)="sortCol('WhoCrt', false)">
+            <ion-icon name="md-arrow-round-down"> </ion-icon>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <button ion-button full color="blue" (click)="createNew()">Add</button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of items; let i = index">
+      <ion-col col-1 >
+        <ion-item>
+          <p>{{item.numb}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item *ngIf="item.isEdit">
+          <ion-input type="text" placeholder="Name" [(ngModel)]="item.nameOf"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!item.isEdit">
+          <p>{{item.nameOf}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <p>{{item.date}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item *ngIf="item.isEdit">
+          <ion-input type="date" placeholder="Expire date" [(ngModel)]="item.expDate" *ngIf="item.isEdit" min="{{nowDate}}"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!item.isEdit">
+          <p>{{item.expDate}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item *ngIf="item.isEdit">
+          <ion-input type="text" placeholder="Price" [(ngModel)]="item.price" *ngIf="item.isEdit"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!item.isEdit">
+          <p>{{item.price}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <p>{{item.whoCrt}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <button ion-button full *ngIf="item.isEdit" (click)="editRow(i, true, item.nameOf, item.expDate, item.price, true)" >Save</button>
+        <div class="buttonFifthProcentDiv" *ngIf="!item.isEdit">
+          <button ion-button full color="light" (click)="editRow(i, false)">Edit</button>
+        </div>
+        <div class="buttonFifthProcentDiv" *ngIf="!item.isEdit">
+          <button ion-button full color="danger" (click)="deleteRow(i)">Delete</button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="newItem">
+      <ion-col col-1>
+        <ion-item>
+          <p>{{items.length+1}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input type="text" placeholder="Name" [(ngModel)]="_nameOf"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <p>{{nowDate}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input type="date" placeholder="Expire date" [(ngModel)]="_expDate" min="{{nowDate}}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input type="text" placeholder="Price" [(ngModel)]="_price"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <p>{{myEmail}}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="addNew(_nameOf, _expDate, _price)">Add New</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title class="intFooter">@2018 ProductInventory</ion-title>
+    </ion-toolbar>
+  </ion-footer>
 
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-title class="intFooter">@2018 ProductInventory</ion-title>
-  </ion-toolbar>
-</ion-footer>
+
+<div class="errorMessageBlock" *ngIf="validationError">
+ <p>{{errorText}}</p>
+</div>
+
+
+
+

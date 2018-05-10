@@ -34,11 +34,6 @@ export class RegistrationPage {
     this.navCtrl.push('login');
   }
 
-  itemMain() {
-    this.navCtrl.push('main');
-  }
-
-
   regMe() {
     this.errorEmail1 = false;
     this.errorEmail2 = false;
@@ -46,14 +41,14 @@ export class RegistrationPage {
     this.errorPass2 = false;
     //console.log(this.email.value);
 
-    if (!this.regEx.test(this.email.value.toLowerCase())) {
+    if (!this.regEx.test(this.email.value)) {
       this.errorEmail2 = true;
     }
     if(!this.errorEmail2){
-      let emailCheck = JSON.parse(localStorage.getItem('usersArray')) || [];
+      let emailCheck = JSON.parse(localStorage.getItem('itemsArray')) || [];
 
       for (let i = 0; i < emailCheck.length; i++) {
-        if (emailCheck[i].email.toLowerCase() == this.email.value.toLowerCase()) {
+        if (emailCheck[i].email == this.email.value) {
           this.errorEmail1 = true;
           //alert('This user already register!');
         }
@@ -69,7 +64,7 @@ export class RegistrationPage {
     }
 
     if (!this.errorPass1 && !this.errorPass2 && !this.errorEmail1 && !this.errorEmail2) {
-      let oldItems = JSON.parse(localStorage.getItem('usersArray')) || [];
+      let oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
 
       var newItem = {
         'email': this.email.value,
@@ -78,13 +73,12 @@ export class RegistrationPage {
 
       oldItems.push(newItem);
 
-      localStorage.setItem('usersArray', JSON.stringify(oldItems));
+      localStorage.setItem('itemsArray', JSON.stringify(oldItems));
 
       alert("Thank you for registration!");
-      this.navCtrl.push('main');
+      this.navCtrl.push('main', {myEmail: users[i].email});
     }
   }
-
   //alert("Passwords do not match!");
 
 
