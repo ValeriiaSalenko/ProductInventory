@@ -1,47 +1,43 @@
+<ion-content padding class="backPage flex"  row>
 
-  <ion-content padding class="backPage flex"  row>
+  <ion-list row  class="fix">
 
-    <ion-list row  class="fix">
+    <ion-item  col-lg-12 col-md-6 class="radTop">
+      <ion-label floating >Email</ion-label>
+      <ion-input class="cursorPad" type="text" #email></ion-input>
+    </ion-item>
 
-      <ion-item  col-lg-12 col-md-6 class="radTop">
-        <ion-label floating >Email</ion-label>
-        <ion-input class="cursorPad" type="text" #email></ion-input>
-      </ion-item>
+    <ion-item *ngIf="errorEmail1" col-lg-12 col-md-6 class="errorMess">
+      <p class="err">This user already register!</p>
+    </ion-item>
 
-      <ion-item *ngIf="errorEmail1" col-lg-12 col-md-6 class="errorMess">
-        <p class="err">This user already register!</p>
-      </ion-item>
+    <ion-item *ngIf="errorEmail2" col-lg-12 col-md-6 class="errorMess">
+      <p class="err">E-mail is not valid!</p>
+    </ion-item>
 
-      <ion-label floating #password>Password</ion-label>
-      <ion-input class="cursorPad" type="password" ></ion-input>
-      <ion-item *ngIf="errorEmail2" col-lg-12 col-md-6 class="errorMess">
-        <p class="err">E-mail is not valid!</p>
-      </ion-item>
+    <ion-item col-lg-12 col-md-6 >
 
-      <ion-item col-lg-12 col-md-6 >
+      <ion-label floating>Password</ion-label>
+      <ion-input class="cursorPad" type="password" #password></ion-input>
+    </ion-item>
 
-        <ion-label floating>Password</ion-label>
-        <ion-input class="cursorPad" type="password" #password></ion-input>
-      </ion-item>
+    <ion-item *ngIf="errorPass2" col-lg-12 col-md-6 class="errorMess">
+      <p class="err">Password must be at least 6 characters long!</p>
+    </ion-item>
 
-      <ion-item *ngIf="errorPass2" col-lg-12 col-md-6 class="errorMess">
-        <p class="err">Password must be at least 6 characters long!</p>
-      </ion-item>
+    <ion-item col-lg-12 col-md-6>
+      <ion-label floating>Repeat Password</ion-label>
+      <ion-input class="cursorPad" type="password" #repPass></ion-input>
+    </ion-item>
 
-      <ion-item col-lg-12 col-md-6>
-        <ion-label floating>Repeat Password</ion-label>
-        <ion-input class="cursorPad" type="password" #repPass></ion-input>
-      </ion-item>
+    <ion-item *ngIf="errorPass1" col-lg-12 col-md-6 class="errorMess">
+      <p class="err">Passwords do not match!</p>
+    </ion-item>
 
-      <ion-item *ngIf="errorPass1" col-lg-12 col-md-6 class="errorMess">
-        <p class="err">Passwords do not match!</p>
-      </ion-item>
+    <ion-item col-lg-12 col-md-6 class="radEnd fix">
+      <button   class="butSign"  ion-button icon-right (click)="regMe()"> Sign up</button>
+      <button   class="butRegistration" (click)="itemTapped()" ion-button icon-right> Sign in</button>
+    </ion-item>
 
-      <ion-item col-lg-12 col-md-6 class="radEnd fix">
-        <button   class="butSign"  ion-button icon-right (click)="itemMain()"> Sign up</button>
-        <button   class="butRegistration" (click)="itemTapped()" ion-button icon-right> Sign in</button>
-      </ion-item>
-
-    </ion-list>
-  </ion-content>
-
+  </ion-list>
+</ion-content>
