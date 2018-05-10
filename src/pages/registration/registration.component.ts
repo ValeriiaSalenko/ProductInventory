@@ -76,7 +76,6 @@ export class RegistrationPage {
       localStorage.setItem('itemsArray', JSON.stringify(oldItems));
 
       alert("Thank you for registration!");
-      this.navCtrl.push('main', {myEmail: users[i].email});
     }
   }
   //alert("Passwords do not match!");
