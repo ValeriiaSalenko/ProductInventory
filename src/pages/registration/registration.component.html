@@ -12,6 +12,11 @@
         <p class="err">This user already register!</p>
       </ion-item>
 
+      <ion-item *ngIf="errorEmail2" col-lg-12 col-md-6 class="errorMess">
+        <p class="err">E-mail is not valid!</p>
+      </ion-item>
+
+
       <ion-item col-lg-12 col-md-6 >
         <ion-label floating>Password</ion-label>
         <ion-input class="cursorPad" type="password" #password></ion-input>
@@ -31,10 +36,11 @@
       </ion-item>
 
       <ion-item col-lg-12 col-md-6 class="radEnd fix">
-        <button   class="butSign"  ion-button icon-right (click)="itemMain()"> Sign up</button>
+        <button   class="butSign"  ion-button icon-right (click)="regMe()"> Sign up</button>
         <button   class="butRegistration" (click)="itemTapped()" ion-button icon-right> Sign in</button>
       </ion-item>
 
     </ion-list>
+
   </ion-content>
 
