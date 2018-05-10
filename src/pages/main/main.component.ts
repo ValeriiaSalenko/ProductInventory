@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, IonicPage } from 'ionic-angular';
-
+import { NavParams, NavController, IonicPage } from 'ionic-angular';
 
 class Item {
   numb: number;
@@ -22,11 +21,11 @@ class Item {
   }
 }
 
+
 @IonicPage({
   name: 'main',
   segment: 'main'
 })
-
 
 @Component({
   selector: 'main-component',
@@ -34,6 +33,10 @@ class Item {
 })
 
 export class MainPage {
+
+
+
+
 
   items: Item[] = [];
 
@@ -52,7 +55,7 @@ export class MainPage {
   errorText : string;
 
   //end of errorMessages
-  constructor(private navParams: NavParams) {
+  constructor(private navParams: NavParams, public navCtrl: NavController) {
     this.myEmail = navParams.get('myEmail');
 
     this.parseItems();
@@ -66,6 +69,7 @@ export class MainPage {
       localStorage.setItem('productsArray', JSON.stringify(this.items));
     }
   }
+
 
   parseItems() {
     this.items = JSON.parse(localStorage.getItem('productsArray')) || [];
@@ -356,9 +360,23 @@ export class MainPage {
         break;
       case 'WhoCrt': //Сортировка по создателю записи
 
-        this.sortingFunc(itemsForSorting, sortingOrder, 'WhoCrt');
+        this.sortingFunc(itemsForSorting, sortingOrder, 'whoCrt');
         break;
     }
+
+  }
+
+  itemAbout() {
+    this.navCtrl.push('about');
+  }
+  itemContact() {
+    this.navCtrl.push('contact');
+  }
+  itemTapped() {
+    this.navCtrl.push('login');
+  }
+  itemMain() {
+    this.navCtrl.push('main');
   }
 
 }

@@ -6,6 +6,8 @@ import { MyApp } from './app.component';
 import { RegistrationPageModule } from '../pages/registration/registration.component.module';
 import { LoginPageModule } from '../pages/login/login.component.module';
 import { MainPageModule } from '../pages/main/main.component.module';
+import { AboutComponentModule } from '../pages/about/about.component.module';
+import { ContactComponentModule } from '../pages/contact/contact.component.module';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -19,7 +21,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IonicModule.forRoot(MyApp),
     RegistrationPageModule,
     LoginPageModule,
-    MainPageModule
+    MainPageModule,
+    AboutComponentModule,
+    ContactComponentModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

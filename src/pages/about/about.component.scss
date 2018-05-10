@@ -1,0 +1,47 @@
+about-component {
+
+    .toolbar-background {
+      background-color:  #fdefcf;
+      border-bottom:1px solid #000 ;
+    }
+
+    .back-button {
+      display: none !important;
+    }
+
+    .intList{
+      display: inline-block;
+      float: right;
+      margin: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #000;
+      text-align: center;
+    }
+
+    .intList:hover{
+      display: inline-block;
+      float: right;
+      margin: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #db4437;
+      border-bottom: 1px solid  #000;
+    }
+
+    .header-md::after{
+      content: "";
+      height: 0;
+    }
+
+    .toolbar-md{
+      min-height: 70px;
+    }
+
+
+    .toolbar-title-md{
+      text-align: center;
+      color: #000;
+      font-size: 15px;
+    }
+}

@@ -1,0 +1,161 @@
+contact-component {
+
+  .toolbar-background {
+    background-color: #fdefcf;
+    border-bottom: 1px solid #000;
+  }
+
+  .backContent {
+    background-image: url("http://static.livedemo00.template-help.com/drupal_52188/sites/all/themes/theme935/images/bg-1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .contMarTop{
+    padding: 0;
+    height: 100%;
+    justify-content: center;
+    display: inline-block;
+    font-family: "Nimbus Mono L";
+  }
+
+  .back-button {
+    display: none !important;
+  }
+
+  .intList {
+    display: inline-block;
+    float: right;
+    margin: 10px;
+    font-family: "Nimbus Mono L";
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+    text-align: center;
+  }
+
+  .intList:hover {
+    font-family: "Nimbus Mono L";
+    display: inline-block;
+    float: right;
+    margin: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #db4437;
+  }
+
+  .header-md::after {
+    content: "";
+    height: 0;
+  }
+
+  .toolbar-md {
+    min-height: 70px;
+  }
+
+  .toolbar-title-md {
+    font-family: "Nimbus Mono L";
+    text-align: center;
+    color: #000;
+    font-size: 20px;
+    border-radius: 10px;
+
+  }
+
+  .borContact {
+    border-radius: 10px;
+    border: 1px solid #000000;
+    background: white;
+  }
+
+  .item-md{
+    padding: 0;
+    border-radius: 10px;
+  }
+
+  .item-inner {
+    padding-left: 10px;
+  }
+
+  .contButton{
+    margin: 10px 0;
+    width: 35%;
+  }
+  .contInformation{
+    display:inline-block;
+    position: absolute;
+    background: none;
+    box-shadow: none;
+    padding: 0 0 0 10px;
+    margin: 0;
+
+  }
+
+  .alignment{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .titInterface{
+    font-size: 30px;
+    text-align: center;
+    font-family: "Nimbus Mono L";
+    font-weight: 800;
+  }
+  .textAboutInf{
+    margin: 5px;
+    font-size: 20px;
+    font-family: "Symbola";
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .card-content{
+    padding: 0;
+  }
+  .cardFooter{
+    display: flex;
+    justify-content: space-between;
+  }
+  .textCont{
+    margin: 5px;
+    font-size: 16px;
+    font-family: "Symbola";
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .errorMess {
+    .item-inner {
+      border-bottom: none !important;
+      .input-wrapper{
+        max-height: 25px !important;
+
+      }
+    }
+  }
+  .err {
+    color: #f53d3d !important;
+  }
+
+  .fix {
+    .item-md {
+      padding: 5px;
+    }
+  }
+
+  .item-inner {
+    .input-wrapper{
+      .label-md[floating]{
+        margin-top: 3px;
+      }
+    }
+  }
+
+
+
+}
+
+
+

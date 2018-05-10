@@ -1,16 +1,16 @@
 <ion-header class="interfaceHeader">
-  <ion-navbar>
-    <!--<ion-tabs>-->
-      <!--<ion-tab  [root]="tab1Root" tabTitle="About" ></ion-tab>-->
-      <!--<ion-tab  [root]="tab2Root" tabTitle="Contact"></ion-tab>-->
-      <!--<ion-tab  [root]="tab3Root" tabTitle="Sign Out" ></ion-tab>-->
-    <!--</ion-tabs>-->
+  <ion-navbar class="intNav">
+    <ion-list col-lg-1 class="intList" (click)="itemTapped()" >Sign Out </ion-list>
+    <ion-list col-lg-1 class="intList" (click)="itemContact()">Contact</ion-list>
+    <ion-list col-lg-1 class="intList" (click)="itemAbout()" >About</ion-list>
+    <ion-list col-lg-1 class="intList" (click)="itemMain()" >Main</ion-list>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="backPage" row>
+<ion-content  padding class="backPage" row>
 
   <ion-grid class="productTable" col-10>
+
     <ion-row>
       <ion-col col-1>
         №
@@ -119,20 +119,17 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <p >{{item.whoCrt}}</p>
+          <p>{{item.whoCrt}}</p>
         </ion-item>
       </ion-col>
       <ion-col>
         <button ion-button full *ngIf="item.isEdit" (click)="editRow(i, true, item.nameOf, item.expDate, item.price, true)" >Save</button>
-
         <div class="buttonFifthProcentDiv" *ngIf="!item.isEdit">
           <button ion-button full color="light" (click)="editRow(i, false)">Edit</button>
         </div>
-
         <div class="buttonFifthProcentDiv" *ngIf="!item.isEdit">
           <button ion-button full color="danger" (click)="deleteRow(i)">Delete</button>
         </div>
-
       </ion-col>
     </ion-row>
     <ion-row *ngIf="newItem">
@@ -170,8 +167,8 @@
         <button ion-button full (click)="addNew(_nameOf, _expDate, _price)">Add New</button>
       </ion-col>
     </ion-row>
-  </ion-grid>
 
+  </ion-grid>
 
   <ion-footer>
     <ion-toolbar>
@@ -184,4 +181,7 @@
 <div class="errorMessageBlock" *ngIf="validationError">
  <p>{{errorText}}</p>
 </div>
+
+
+
 
