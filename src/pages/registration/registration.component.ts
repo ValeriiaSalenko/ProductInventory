@@ -20,35 +20,35 @@ export class RegistrationPage {
   @ViewChild('password') password;
   @ViewChild('repPass') repPass;
 
-  errorEmail1: boolean = false;
-  errorEmail2: boolean = false;
-  errorPass1: boolean = false;
-  errorPass2: boolean = false;
+  errorEmail1: boolean = false; // Error text 'User not found!'
+  errorEmail2: boolean = false; // Error text 'Enter the e-mail, please'
+  errorPass1: boolean = false;  // Error text 'Enter password!'
+  errorPass2: boolean = false;  // Error text 'Wrong password!!!'
+
   regEx = /^\w+@\w+\.\w{2,4}$/i;
 
   constructor(public navCtrl: NavController) {
-
+    if(localStorage.getItem('nowUser') != null)
+      if(localStorage.getItem('nowUser').length > 0) this.navCtrl.push('main');
   }
 
+  /**
+   * Function to go to the page 'login'
+   */
   itemTapped() {
     this.navCtrl.push('login');
   }
 
-  itemMain() {
-    this.navCtrl.push('main');
-  }
-  regMe() {
-    this.errorEmail1 = false;
-    this.errorEmail2 = false;
-    this.errorPass1 = false;
-    this.errorPass2 = false;
-    //console.log(this.email.value);
-
+  /**
+   * Function for validate inputs and correct registration
+   */
+  validation() {
     if (!this.regEx.test(this.email.value)) {
       this.errorEmail2 = true;
     }
-    if(!this.errorEmail2){
-      let emailCheck = JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+    if(!this.errorEmail2) {
+      let emailCheck = JSON.parse(localStorage.getItem('usersArray')) || [];
 
       for (let i = 0; i < emailCheck.length; i++) {
         if (emailCheck[i].email == this.email.value) {
@@ -65,9 +65,22 @@ export class RegistrationPage {
     if (!(this.password.value == this.repPass.value)) {
       this.errorPass1 = true;
     }
+    if (!this.errorPass1 && !this.errorPass2 && !this.errorEmail1 && !this.errorEmail2)
+      return true;
+  }
 
-    if (!this.errorPass1 && !this.errorPass2 && !this.errorEmail1 && !this.errorEmail2) {
-      let oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
+  /**
+   * Function 'regMe' needed for register new user
+   */
+  regMe() {
+    this.errorEmail1 = false;
+    this.errorEmail2 = false;
+    this.errorPass1 = false;
+    this.errorPass2 = false;
+    //console.log(this.email.value);
+
+    if (this.validation()) {
+      let oldItems = JSON.parse(localStorage.getItem('usersArray')) || [];
 
       var newItem = {
         'email': this.email.value,
@@ -76,17 +89,9 @@ export class RegistrationPage {
 
       oldItems.push(newItem);
 
-      localStorage.setItem('itemsArray', JSON.stringify(oldItems));
+      localStorage.setItem('usersArray', JSON.stringify(oldItems));
 
       alert("Thank you for registration!");
-      // console.log('test');
     }
   }
-  //alert("Passwords do not match!");
-
-
-  // var mass = JSON.parse(localStorage.getItem('itemsArray')) || [];
-  // for(let i = 0; i < mass.length; i++){
-  //   console.log(mass[i].email + ":" + mass[i].password);
-  // }
 }
