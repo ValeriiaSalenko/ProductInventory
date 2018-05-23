@@ -51,6 +51,7 @@ contact-component {
 
   .toolbar-md {
     min-height: 70px;
+    padding: 0;
   }
 
   .toolbar-title-md {
@@ -153,9 +154,42 @@ contact-component {
     }
   }
 
+  .sentFooter{
+    background: #32db64;
+    height: 70px;
+    padding: 0;
+    animation: anim 4s;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff;
+    bottom: 0;
+    text-align: center;
+    z-index: 999;
+    width: 100%;
+    p {
+      display: inline-block;
+    }
+  }
 
+  @keyframes anim {
+       0% {
+         opacity: 0;
+       }
+       50% {
+         opacity: 1;
+       }
+       100% {
+         opacity: 0;
+       }
+     }
 
 }
+
+
+
+
 
 
 
