@@ -9,6 +9,8 @@ import { MainPageModule } from '../pages/main/main.component.module';
 import { AboutComponentModule } from '../pages/about/about.component.module';
 import { ContactComponentModule } from '../pages/contact/contact.component.module';
 
+
+import { HttpModule }   from '@angular/http';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
@@ -19,6 +21,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
     RegistrationPageModule,
     LoginPageModule,
     MainPageModule,

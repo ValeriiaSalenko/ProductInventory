@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-
+import { Http } from "@angular/http";
 
 
 @IonicPage({
@@ -22,10 +22,19 @@ export class LoginPage {
   errorPass1: boolean = false;  // Error text 'Enter password!'
   errorPass2: boolean = false;  // Error text 'Wrong password!!!'
 
-  constructor(public navCtrl: NavController) {
+  usersInJSON: string;
+
+  constructor(public navCtrl: NavController, public http: Http) {
 
     if(localStorage.getItem('nowUser') != null)
       if(localStorage.getItem('nowUser').length > 0) this.navCtrl.push('main');
+    this.http.get('http://localhost:3000/registration')
+      .subscribe(res => this.usersInJSON = res.text());
+  }
+
+  sleep(ms) {
+    ms += new Date().getTime();
+    while (new Date() < ms){}
   }
 
   /**
@@ -48,7 +57,7 @@ export class LoginPage {
     }
 
     if(!this.errorEmail2) {
-      let emailCheck = JSON.parse(localStorage.getItem('usersArray')) || [];
+      let emailCheck = JSON.parse(this.usersInJSON) || [];
       let userF = false;
       for (let i = 0; i < emailCheck.length; i++) {
         if (emailCheck[i].email.toLowerCase() == this.email.value.toLowerCase()) {
@@ -70,13 +79,25 @@ export class LoginPage {
    *
    */
   signIn() {
+
     this.errorEmail1 = false;
     this.errorEmail2 = false;
     this.errorPass1 = false;
     this.errorPass2 = false;
 
+
+    /**
+     * ПОЧИНИТЬ!!!
+     */
+    console.log('До запроса:', this.usersInJSON);
+
+    this.http.get('http://localhost:3000/registration')
+      .subscribe(res => this.usersInJSON = res.text());
+
+    console.log('После запроса:', this.usersInJSON);
+
     if (this.validation()) {
-      let users = JSON.parse(localStorage.getItem('usersArray')) || [];
+      let users = JSON.parse(this.usersInJSON) || [];
 
       for (let i = 0; i < users.length; i++) {
         if (users[i].email.toLowerCase() == this.email.value.toLowerCase()) {

@@ -1,5 +1,7 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonicPage, NavController, Slides } from 'ionic-angular';
+import { Http } from "@angular/http";
+
 
 class Photo {
   url: string;
@@ -34,25 +36,6 @@ templateUrl: 'about.component.html'
 })
 export class AboutComponent {
 
-  @ViewChild(Slides) slides: Slides;
-  photosArr : string [] = ['https://photos-kr.kcdn.kz/content/30/5629549cfa9dd4394-917450300-2014industrialnyy-impuls.jpg',
-    'http://mebel-astra.com/sklad-5.jpg',
-    'http://tehnopark-m4.ru/__scale/uploads/s/v/5/r/v5rpwqjnpaxp/img/full_1FN4snhP.jpg?width=720&quality=92',
-    'http://abmcloud.com/wp-content/uploads/otraslevaya-sistema-ucheta-zapasnyh-chastej-na-sklade-840x468.jpg',
-    'http://abc-byvanie.sk/media/images/1418804537-jemebe-original.jpg',
-    'http://www.m-apteka.com/upload/iblock/15b/15baf0bfed8dd7dd7746a015088081a7.jpg',
-    'https://besplatka.ua/aws/22/50/08/38/rabotniki-na-sklad-odezhdy-v-polshu-photo-97f3.jpg'
-  ];
-
-  constructor(public navCtrl: NavController) {
-    if(localStorage.getItem('nowUser') != null) {
-      if (localStorage.getItem('nowUser').length === 0) this.itemTapped();
-    }
-    this.parseItemsArticles();
-    this.parseItemsPhoto();
-    this.slidesCounter();
-  }
-
   articles: Article[] = [];
   newArticle: boolean = false;
   newTitleText : string;
@@ -61,23 +44,55 @@ export class AboutComponent {
   photoURL : string;
   slidesCountArr : number[] = [];
 
+  @ViewChild(Slides) slides: Slides;
+  photosArr : string [];
+  //   = ['https://photos-kr.kcdn.kz/content/30/5629549cfa9dd4394-917450300-2014industrialnyy-impuls.jpg',
+  //   'http://mebel-astra.com/sklad-5.jpg',
+  //   'http://tehnopark-m4.ru/__scale/uploads/s/v/5/r/v5rpwqjnpaxp/img/full_1FN4snhP.jpg?width=720&quality=92',
+  //   'http://abmcloud.com/wp-content/uploads/otraslevaya-sistema-ucheta-zapasnyh-chastej-na-sklade-840x468.jpg',
+  //   'http://abc-byvanie.sk/media/images/1418804537-jemebe-original.jpg',
+  //   'http://www.m-apteka.com/upload/iblock/15b/15baf0bfed8dd7dd7746a015088081a7.jpg',
+  //   'https://besplatka.ua/aws/22/50/08/38/rabotniki-na-sklad-odezhdy-v-polshu-photo-97f3.jpg'
+  // ];
+
+  constructor(public navCtrl: NavController, public http: Http) {
+    if(localStorage.getItem('nowUser') != null) {
+      if (localStorage.getItem('nowUser').length === 0) this.itemTapped();
+    }
+    this.parseItemsArticles();
+    this.parseItemsPhoto();
+
+
+  }
+
   deletePhoto(i) {
 
     if (this.slidesCountArr.length > 1 && (this.photosArr.length  % 4) === 1 && i === this.photosArr.length - 1) {
       this.slides.slidePrev();
     }
-    let oldItems = JSON.parse(localStorage.getItem('photosArray')) || [];
 
-    oldItems.splice(i,1);
+    this.http.get('http://localhost:3000/photos')
+      .subscribe(res =>
+      {
+        let phInJSON = res.text();
 
-    localStorage.setItem('photosArray', JSON.stringify(oldItems));
+        let oldItems = JSON.parse(phInJSON) || [];
 
-    this.parseItemsPhoto();
+        oldItems.splice(i,1);
 
-    this.slidesCounter();
+        this.photosArr = oldItems;
+
+        this.slidesCounter();
+
+        this.http.post("http://localhost:3000/photos", oldItems).subscribe();
+
+        //this.parseItemsArticles();
+
+        //location.reload(true);
+
+        //this.parseItemsPhoto();
+      });
   }
-
-
 
   division(a,b) {
     return (a - a % b) / b;
@@ -109,58 +124,101 @@ export class AboutComponent {
 
   addNewPhoto(photoURL) {
     if (this.isNewPhoto && (/^(ftp|http|https):\/\/[^ "]+$/.test(photoURL) || /((\w{1}:\\(([A-z]|[0-9]|\s)+)\\\w+\.\w+))|(\w{1}:\\(\w+\.\w+))/.test(photoURL))) {
-      this.addToLocalStoragePhoto(photoURL);
+      this.addToDBPhoto(photoURL);
       this.photoURL = '';
       this.isNewPhoto = !this.isNewPhoto;
     }
-    this.slidesCounter();
+    //this.slidesCounter();
   }
 
   parseItemsPhoto() {
-    this.photosArr = JSON.parse(localStorage.getItem('photosArray')) || [];
+    this.http.get('http://localhost:3000/photos')
+      .subscribe(res =>
+      {
+        let phInJSON = res.text();
+        this.photosArr = JSON.parse(phInJSON) || [];
+
+        this.slidesCounter();
+      });
+
+    //this.photosArr = JSON.parse(localStorage.getItem('photosArray')) || [];
 
   }
 
-  addToLocalStoragePhoto(url) {
-    let oldItems = JSON.parse(localStorage.getItem('photosArray')) || [];
+  addToDBPhoto(url) {
+    this.http.get('http://localhost:3000/photos')
+      .subscribe(res =>
+      {
+        let photoInJSON = res.text();
 
-    let newMyItem = new Photo(url);
+        let oldItems = JSON.parse(photoInJSON) || [];
 
-    oldItems.unshift(newMyItem);
+        let newMyItem = new Photo(url);
 
-    localStorage.setItem('photosArray', JSON.stringify(oldItems));
+        oldItems.unshift(newMyItem);
 
-    this.parseItemsPhoto();
+        this.photosArr = oldItems;
+
+        this.slidesCounter();
+
+        this.http.post("http://localhost:3000/photos", oldItems).subscribe();
+
+        //location.reload(true)
+      });
   }
-
 
   parseItemsArticles() {
-    this.articles = JSON.parse(localStorage.getItem('articlesArray')) || [];
+    this.http.get('http://localhost:3000/articles')
+      .subscribe(res =>
+      {
+        let artInJSON = res.text();
+
+        this.articles = JSON.parse(artInJSON) || [];
+      });
   }
 
-  addToLocalStorageArticles(titleText, articleText) {
-    let oldItems = JSON.parse(localStorage.getItem('articlesArray')) || [];
+  addToDBArticles(titleText, articleText) {
 
-    let newMyItem = new Article(titleText, articleText);
+    this.http.get('http://localhost:3000/articles')
+      .subscribe(res =>
+      {
+        let artInJSON = res.text();
 
-    oldItems.unshift(newMyItem);
+        let oldItems = JSON.parse(artInJSON) || [];
 
-    localStorage.setItem('articlesArray', JSON.stringify(oldItems));
+        let newMyItem = new Article(titleText, articleText);
 
-    this.parseItemsArticles();
+        oldItems.unshift(newMyItem);
+
+        this.http.post("http://localhost:3000/articles", oldItems).subscribe();
+
+        //this.parseItemsArticles();
+        location.reload(true)
+
+      });
   }
 
   editThisArticle(titleText, articleText, i) {
 
-    let oldItems = JSON.parse(localStorage.getItem('articlesArray')) || [];
+    this.http.get('http://localhost:3000/articles')
+      .subscribe(res =>
+      {
+        let artInJSON = res.text();
 
-    oldItems[i].artTitle = titleText;
-    oldItems[i].artText = articleText;
-    oldItems[i].isEdit = !this.articles[i].isEdit;
+        let oldItems = JSON.parse(artInJSON) || [];
 
-    localStorage.setItem('articlesArray', JSON.stringify(oldItems));
+        oldItems[i].artTitle = titleText;
+        oldItems[i].artText = articleText;
+        oldItems[i].isEdit = !this.articles[i].isEdit;
 
-    this.parseItemsArticles();
+        this.articles = oldItems;
+
+        this.http.post("http://localhost:3000/articles", oldItems).subscribe();
+
+        //this.parseItemsArticles();
+
+        //location.reload(true)
+      });
   }
 
   checkingEditing() {
@@ -199,13 +257,24 @@ export class AboutComponent {
   }
 
   deleteArticle(i) {
-    let oldItems = JSON.parse(localStorage.getItem('articlesArray')) || [];
 
-    oldItems.splice(i,1);
+    this.http.get('http://localhost:3000/articles')
+      .subscribe(res =>
+      {
+        let artInJSON = res.text();
 
-    localStorage.setItem('articlesArray', JSON.stringify(oldItems));
+        let oldItems = JSON.parse(artInJSON) || [];
 
-    this.parseItemsArticles();
+        oldItems.splice(i,1);
+
+        this.articles = oldItems;
+
+        this.http.post("http://localhost:3000/articles", oldItems).subscribe();
+
+        //this.parseItemsArticles();
+
+       // location.reload(true)
+      });
   }
 
   itemContact() {
@@ -228,7 +297,7 @@ export class AboutComponent {
       return;
     }
     //this.articles.unshift(new Article(newTitleText, newArticleText));
-    this.addToLocalStorageArticles(newTitleText, newArticleText);
+    this.addToDBArticles(newTitleText, newArticleText);
     this.parseItemsArticles();
     this.newTitleText = '';
     this.newArticleText = '';

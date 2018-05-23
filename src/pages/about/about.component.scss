@@ -12,6 +12,7 @@ about-component {
     .modalWindow{
       .icon {
         display: inline-block;
+        cursor: pointer;
       }
       border: 1px solid #000000;
       display: block;
@@ -137,6 +138,7 @@ about-component {
               height: 20px;
               color: red;
               font-size: 42px;
+              cursor: pointer;
             }
             &:hover .trash {
               display: block;

@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-
+import { Http } from "@angular/http";
 
 
 @IonicPage({
@@ -26,10 +26,13 @@ export class RegistrationPage {
   errorPass2: boolean = false;  // Error text 'Wrong password!!!'
 
   regEx = /^\w+@\w+\.\w{2,4}$/i;
+  usersInJSON : string;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public http: Http) {
     if(localStorage.getItem('nowUser') != null)
       if(localStorage.getItem('nowUser').length > 0) this.navCtrl.push('main');
+    this.http.get('http://localhost:3000/registration')
+      .subscribe(res => this.usersInJSON = res.text());
   }
 
   /**
@@ -42,16 +45,18 @@ export class RegistrationPage {
   /**
    * Function for validate inputs and correct registration
    */
+
   validation() {
+
     if (!this.regEx.test(this.email.value)) {
       this.errorEmail2 = true;
     }
 
     if(!this.errorEmail2) {
-      let emailCheck = JSON.parse(localStorage.getItem('usersArray')) || [];
+      let emailCheck = JSON.parse(this.usersInJSON) || [];
 
       for (let i = 0; i < emailCheck.length; i++) {
-        if (emailCheck[i].email == this.email.value) {
+        if (emailCheck[i].email.toLowerCase() == this.email.value.toLowerCase()) {
           this.errorEmail1 = true;
           //alert('This user already register!');
         }
@@ -73,25 +78,26 @@ export class RegistrationPage {
    * Function 'regMe' needed for register new user
    */
   regMe() {
+
     this.errorEmail1 = false;
     this.errorEmail2 = false;
     this.errorPass1 = false;
     this.errorPass2 = false;
     //console.log(this.email.value);
-
     if (this.validation()) {
-      let oldItems = JSON.parse(localStorage.getItem('usersArray')) || [];
 
-      var newItem = {
-        'email': this.email.value,
-        'password': this.password.value
+      let newUser = {
+        email: this.email.value,
+        password: this.password.value
       };
 
-      oldItems.push(newItem);
-
-      localStorage.setItem('usersArray', JSON.stringify(oldItems));
+      this.http.post('http://localhost:3000/registration', newUser)
+        .subscribe();
 
       alert("Thank you for registration!");
+      this.navCtrl.push('main');
+      localStorage.setItem('nowUser', this.email.value);
+      // this.navCtrl.push('login');
     }
   }
 }
