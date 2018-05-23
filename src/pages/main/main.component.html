@@ -3,7 +3,7 @@
     <ion-list col-lg-1 class="intList" (click)="itemTapped()" >Sign Out </ion-list>
     <ion-list col-lg-1 class="intList" (click)="itemContact()">Contact</ion-list>
     <ion-list col-lg-1 class="intList" (click)="itemAbout()" >About</ion-list>
-    <ion-list col-lg-1 class="intList" (click)="itemMain()" >Main</ion-list>
+    <ion-list col-lg-1 class="intList active">Main</ion-list>
   </ion-navbar>
 </ion-header>
 
@@ -14,68 +14,40 @@
     <ion-row>
       <ion-col col-1>
         №
-        <div class="ico-level-1">
-          <div class="ico-level-2" (click)="sortCol('Number', true)">
-            <ion-icon name="md-arrow-round-up"></ion-icon>
-          </div>
-          <div class="ico-level-2" (click)="sortCol('Number', false)">
-            <ion-icon name="md-arrow-round-down"> </ion-icon>
-          </div>
+      </ion-col>
+      <ion-col>
+        <div (click)="sortCol('Name')">
+          Name
+          <ion-icon name="md-arrow-round-up" *ngIf="sortName == 1"></ion-icon>
+          <ion-icon name="md-arrow-round-down" *ngIf="sortName == 2"> </ion-icon>
         </div>
       </ion-col>
       <ion-col>
-        Name
-        <div class="ico-level-1">
-          <div class="ico-level-2" (click)="sortCol('Name', true)">
-            <ion-icon name="md-arrow-round-up"></ion-icon>
-          </div>
-          <div class="ico-level-2" (click)="sortCol('Name', false)">
-            <ion-icon name="md-arrow-round-down"> </ion-icon>
-          </div>
+        <div (click)="sortCol('CrDate')">
+          Created date
+          <ion-icon name="md-arrow-round-up" *ngIf="sortDate== 1"></ion-icon>
+          <ion-icon name="md-arrow-round-down" *ngIf="sortDate == 2"> </ion-icon>
         </div>
       </ion-col>
       <ion-col>
-        Created Date
-        <div class="ico-level-1">
-          <div class="ico-level-2" (click)="sortCol('CrDate', true)">
-            <ion-icon name="md-arrow-round-up"></ion-icon>
-          </div>
-          <div class="ico-level-2" (click)="sortCol('CrDate', false)">
-            <ion-icon name="md-arrow-round-down"> </ion-icon>
-          </div>
+        <div (click)="sortCol('ExpDate')">
+          Expire Date
+          <ion-icon name="md-arrow-round-up" *ngIf="sortExpDate == 1"></ion-icon>
+          <ion-icon name="md-arrow-round-down" *ngIf="sortExpDate == 2"> </ion-icon>
         </div>
       </ion-col>
       <ion-col>
-        Expire date
-        <div class="ico-level-1">
-          <div class="ico-level-2" (click)="sortCol('ExpDate', true)">
-            <ion-icon name="md-arrow-round-up"></ion-icon>
-          </div>
-          <div class="ico-level-2" (click)="sortCol('ExpDate', false)">
-            <ion-icon name="md-arrow-round-down"> </ion-icon>
-          </div>
+        <div (click)="sortCol('Price')">
+          Price
+          <ion-icon name="md-arrow-round-up" *ngIf="sortPrice == 1"></ion-icon>
+          <ion-icon name="md-arrow-round-down" *ngIf="sortPrice == 2"> </ion-icon>
         </div>
       </ion-col>
       <ion-col>
-        Price
-        <div class="ico-level-1">
-          <div class="ico-level-2" (click)="sortCol('Price', true)">
-            <ion-icon name="md-arrow-round-up"></ion-icon>
-          </div>
-          <div class="ico-level-2" (click)="sortCol('Price', false)">
-            <ion-icon name="md-arrow-round-down"> </ion-icon>
-          </div>
-        </div>
-      </ion-col>
-      <ion-col>
-        Who created
-        <div class="ico-level-1">
-          <div class="ico-level-2" (click)="sortCol('WhoCrt', true)">
-            <ion-icon name="md-arrow-round-up"></ion-icon>
-          </div>
-          <div class="ico-level-2" (click)="sortCol('WhoCrt', false)">
-            <ion-icon name="md-arrow-round-down"> </ion-icon>
-          </div>
+        <div (click)="sortCol('WhoCrt')">
+          Who created
+          <ion-icon name="md-arrow-round-up" *ngIf="sortWhoCrt == 1"></ion-icon>
+          <ion-icon name="md-arrow-round-down" *ngIf="sortWhoCrt == 2"> </ion-icon>
         </div>
       </ion-col>
       <ion-col>
@@ -179,9 +151,9 @@
 </ion-content>
 
 <div class="errorMessageBlock" *ngIf="validationError">
- <p>{{errorText}}</p>
+  <p>{{errorText}}</p>
 </div>
 
 
 
-
+K

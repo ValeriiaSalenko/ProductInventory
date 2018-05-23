@@ -2,16 +2,155 @@
   <ion-navbar class="intNav">
     <ion-list col-lg-1 class="intList" (click)="itemTapped()" >Sign Out </ion-list>
     <ion-list col-lg-1 class="intList" (click)="itemContact()">Contact</ion-list>
-    <ion-list col-lg-1 class="intList" (click)="itemAbout()" >About</ion-list>
+    <ion-list col-lg-1 class="intList active" >About</ion-list>
     <ion-list col-lg-1 class="intList" (click)="itemMain()" >Main</ion-list>
   </ion-navbar>
 </ion-header>
-<ion-content  padding class="backPage" row>
+
+<ion-content  padding row class="backContent">
+
+  <ion-card col-lg-4 col-md-5 col-sm-12 col-xs-12 offset-lg-1 class="about">
+    <ion-card-content class="alignment">
+      <ion-card-title class="titInterface">
+        About us
+      </ion-card-title>
+      <p class="textAboutInf">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque et quasi architecto beatae vitae dicta sunt explicabo.
+        Mornunc odio gravida atcursus neus a lorem.
+        Maecenas tristique orci ac sem. Duis ultric pharetra magna.
+        Donec accumsan malesuada orcic sit amet eros. Lorem ipsum dolor sit amet onsectetuer adipiscing
+        Mauris fermentum dictum magna. Sed laoreet aliquam leo.
+        Ut tellus dolor dapibus eget.
+        Mauris tincidunt aliquam lectus sed vestibulum.
+        Vestibulum bibendum suscipit mattis.
+        Praesent nec tincidunt turpis. Aliquam et nisi risus.
+        Cras ut varius ante. Ut congue gravida dolor, vitae viverra dolor.
+      </p>
+      <div class="cardFooter">
+        <p col-lg-5 col-md-5 class="textCont">
+          The Company Name Inc.
+          9870 St Vincent Place,
+          Glasgow, DC 45 Fr 45.
+        </p>
+        <p col-lg-5 col-md-5 class="textCont">
+          E-mail: mail@demolink.org <br>
+          Telephone: +1 959 603 6035 <br>
+          FAX: + 1 504 889 9898
+        </p>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card col-lg-4 col-md-5 col-sm-12 col-xs-12 offset-lg-1 class="about">
+    <ion-card-content class="alignment">
+      <ion-card-title class="titInterface">
+        What's new?
+
+        <div *ngIf="!checkingEditing()" class="addNewBtn">
+          <button ion-button color="blue" *ngIf="!newArticle" (click)="createFormForNewArticle()">Add new's</button>
+        </div>
+        <div *ngIf="newArticle" class="addNewBtn">
+          <button ion-button color="blue" (click)="createFormForNewArticle(); addNewArticle(newTitleText, newArticleText)">Add new's</button>
+        </div>
+
+      </ion-card-title>
+      <div class="myInput" *ngIf="newArticle">
+
+        <ion-item >
+          <ion-label floating>Title</ion-label>
+          <ion-input clearInput type="text" [(ngModel)]="newTitleText"></ion-input>
+        </ion-item>
+
+        <ion-item >
+          <ion-label floating>Article</ion-label>
+          <ion-textarea ion-row="5" type="text" [(ngModel)]="newArticleText"></ion-textarea>
+        </ion-item>
 
 
+      </div>
+      <div class="myInput" *ngFor=" let article of articles; let i = index">
+        <div *ngIf="!article.isEdit">
+          <h4> {{article.artTitle}}</h4>
+          <a (click)="editingArticleOpen(article)">Edit <ion-icon name="build"></ion-icon></a> / <a (click)="deleteArticle(i)">Delete <ion-icon name="hammer"></ion-icon></a>
+          <p class="textAboutInf"> {{article.artText}} </p>
+        </div>
+
+        <div *ngIf="article.isEdit">
+          <ion-item>
+            <ion-label floating>Title</ion-label>
+            <ion-input clearInput type="text" (ionChange)="checkingText(article.artTitle)" [(ngModel)]="article.artTitle"></ion-input>
+          </ion-item>
+
+          <ion-item class="myInput">
+            <ion-label floating>Article</ion-label>
+            <ion-textarea ion-row="5" type="text" (ionChange)="checkingText(article.artText)" [(ngModel)]="article.artText"></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <button id="editArt" ion-button color="blue" (click)="editThisArticle(article.artTitle, article.artText, i)">Edit article</button>
+          </ion-item>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card col-lg-9 col-md-5 col-sm-12 col-xs-12 offset-lg-1 class="about last">
+    <ion-card-content class="alignment">
+
+      <ion-card-title class="titInterface">
+        Our stocks
+        <div class="addNewBtn">
+          <button ion-button color="blue" (click)="this.isNewPhoto = !this.isNewPhoto">Add photo</button>
+        </div>
+      </ion-card-title>
+
+      <ion-slides class="mySlider">
+        <ion-slide *ngFor="let slide of slidesCountArr; let i = index">
+          <div class="slide">
+            <div (click)="prevSld()" class="arrow left"><ion-icon name="ios-arrow-back-outline"></ion-icon></div>
+            <div class="slidePh">
+              <div class="onePhoto" *ngIf="photosArr[(i+1)*4-4] !== undefined">
+                <img class="slideImg" src="{{photosArr[(i+1)*4-4].url}}">
+                <div class="trash" (click)="deletePhoto((i+1)*4-4)"><ion-icon name="trash"></ion-icon></div>
+              </div>
+
+              <div class="onePhoto" *ngIf="photosArr[(i+1)*4-3] !== undefined">
+                <img class="slideImg" src="{{photosArr[(i+1)*4-3].url}}">
+                <div class="trash" (click)="deletePhoto((i+1)*4-3)"><ion-icon name="trash"></ion-icon></div>
+              </div>
+
+              <div class="onePhoto" *ngIf="photosArr[(i+1)*4-2] !== undefined">
+                <img class="slideImg" src="{{photosArr[(i+1)*4-2].url}}">
+                <div class="trash" (click)="deletePhoto((i+1)*4-2)"><ion-icon name="trash"></ion-icon></div>
+              </div>
+
+              <div class="onePhoto" *ngIf="photosArr[(i+1)*4-1] !== undefined">
+                <img class="slideImg" src="{{photosArr[(i+1)*4-1].url}}">
+                <div class="trash" (click)="deletePhoto((i+1)*4-1)"><ion-icon name="trash"></ion-icon></div>
+              </div>
+
+            </div>
+            <div (click)="nextSld()" class="arrow right"><ion-icon name="ios-arrow-forward-outline"></ion-icon></div>
+          </div>
+        </ion-slide>
+      </ion-slides>
+
+    </ion-card-content>
+  </ion-card>
+
+  <div class="modal" *ngIf="isNewPhoto">
+    <div class="modalWindow">
+      <ion-input placeholder="Enter URL" [(ngModel)]="photoURL"></ion-input>
+      <div class="icon" (click)="isNewPhoto = !isNewPhoto"><ion-icon name="md-close" ></ion-icon></div>
+      <ion-input type="file"></ion-input>
+      <button ion-button full color="blue" (click)="addNewPhoto(photoURL)">Add photo</button>
+    </div>
+  </div>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title class="intFooter">@2018 ProductInventory</ion-title>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-title class="intFooter">@2018 ProductInventory</ion-title>
-  </ion-toolbar>
-</ion-footer>

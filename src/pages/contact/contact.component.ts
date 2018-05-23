@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 
 declare var google;
 
+
 @IonicPage({
   name: 'contact',
   segment: 'contact'
@@ -15,12 +16,14 @@ declare var google;
   templateUrl: 'contact.component.html',
 
 })
+
 export class ContactComponent {
 
   nameUser: string;
   emailUser: string;
   subjectUser: string;
   messageUser: string;
+
 
   @ViewChild('email') email;
   @ViewChild('name') name;
@@ -38,22 +41,10 @@ export class ContactComponent {
   regMes = /^[a-zA-Z0-9_ ]+$/im;
 
   constructor(public navCtrl: NavController, public http: Http) {
-
+    if(localStorage.getItem('nowUser') != null)
+      if(localStorage.getItem('nowUser').length === 0) this.itemTapped();
   }
 
- /* doGet(){
-    let x = {nameUsers:this.nameUser, emailUsers: this.emailUser, subjectUsers: this.subjectUser, messageUsers: this.messageUser};
-    console.log(x);
-    this.http.post('http://localhost:3000/', x)
-      .subscribe(
-        data=>{
-          alert('OK');
-          alert(x);
-
-        }
-    )
-
-  }*/
 
   itemAbout() {
     this.navCtrl.push('about');
@@ -64,6 +55,7 @@ export class ContactComponent {
   }
 
   itemTapped() {
+    localStorage.setItem('nowUser', '');
     this.navCtrl.push('login');
   }
 
@@ -78,6 +70,7 @@ export class ContactComponent {
     this.errorSubj = false;
     this.errorMess = false;
     this.sentMess = false;
+
 
 
     if (!this.regName.test(this.name.value.toLowerCase())) {
@@ -105,7 +98,7 @@ export class ContactComponent {
       console.log(x);
       this.http.post('http://localhost:3000/', x)
         .subscribe(
-          data=>{
+          data => {
             alert('OK');
             alert(x);
 
