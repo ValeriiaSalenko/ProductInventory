@@ -4,6 +4,7 @@ contact-component {
   .active {
     color: #db4438 !important;
   }
+
   .toolbar-background {
     background-color: #fdefcf;
     border-bottom: 1px solid #000;
@@ -14,6 +15,7 @@ contact-component {
     background-position: center;
     background-repeat: no-repeat;
   }
+
 
   .contMarTop {
     display: inline-flex;
@@ -56,16 +58,15 @@ contact-component {
 
   .toolbar-md {
     min-height: 70px;
+    padding: 0;
   }
 
   .toolbar-title-md {
-    padding: 1px;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     text-align: center;
     color: #000;
     font-size: 20px;
     border-radius: 10px;
-    //border-right: 1px solid #000;
   }
 
   .borContact {
@@ -74,7 +75,8 @@ contact-component {
     background: white;
   }
 
-  .item-md {
+
+  .item-md{
     padding: 0;
     border-radius: 10px;
   }
@@ -135,7 +137,8 @@ contact-component {
   .errorMess {
     .item-inner {
       border-bottom: none !important;
-      .input-wrapper {
+
+      .input-wrapper{
         max-height: 25px !important;
 
       }
@@ -159,7 +162,37 @@ contact-component {
     }
   }
 
-}
 
+  .sentFooter{
+    background: #32db64;
+    height: 70px;
+    padding: 0;
+    animation: anim 4s;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff;
+    bottom: 0;
+    text-align: center;
+    z-index: 999;
+    width: 100%;
+    p {
+      display: inline-block;
+    }
+  }
+
+  @keyframes anim {
+       0% {
+         opacity: 0;
+       }
+       50% {
+         opacity: 1;
+       }
+       100% {
+         opacity: 0;
+       }
+     }
+}
 
 

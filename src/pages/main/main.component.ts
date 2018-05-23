@@ -166,8 +166,8 @@ export class MainPage {
       {
         for (let i = 0; i < this.items.length; i++){
           if (this.items[i].isEdit == true) {
-              //console.log(this.items[i])
-              return true;
+            //console.log(this.items[i])
+            return true;
           }
         }
         if (edit)
@@ -188,42 +188,42 @@ export class MainPage {
    */
   editRow(numb, edit, nameOf, expDate, price) {
 
-      if (edit) {
+    if (edit) {
 
-        this.createErrorMessage(nameOf, expDate, price);
+      this.createErrorMessage(nameOf, expDate, price);
 
-        if (this.items[numb].expDate !== undefined && this.items[numb].expDate != '' && Number(this.items[numb].price) > 0 && !isNaN(Number(this.items[numb].price)) && this.items[numb].price !== undefined && this.items[numb].nameOf !== undefined) {
-          //console.log(this.items[numb]);
+      if (this.items[numb].expDate !== undefined && this.items[numb].expDate != '' && Number(this.items[numb].price) > 0 && !isNaN(Number(this.items[numb].price)) && this.items[numb].price !== undefined && this.items[numb].nameOf !== undefined) {
+        //console.log(this.items[numb]);
 
-          this.items[numb].nameOf = nameOf;
-          this.items[numb].expDate = expDate;
-          this.items[numb].price = price;
+        this.items[numb].nameOf = nameOf;
+        this.items[numb].expDate = expDate;
+        this.items[numb].price = price;
 
-          this.http.get('http://localhost:3000/main')
-            .subscribe(res =>
-            {
-              let items = JSON.parse(res.text()) || [];
+        this.http.get('http://localhost:3000/main')
+          .subscribe(res =>
+          {
+            let items = JSON.parse(res.text()) || [];
 
-              items[numb].nameOf = nameOf;
-              items[numb].expDate = expDate;
-              items[numb].price = price;
+            items[numb].nameOf = nameOf;
+            items[numb].expDate = expDate;
+            items[numb].price = price;
 
-              this.items = items;
+            this.items = items;
 
-              this.http.post('http://localhost:3000/main', items).subscribe();
-
-
-            });
+            this.http.post('http://localhost:3000/main', items).subscribe();
 
 
-          this.validationError = false;
-        } else {
-          return;
-        }
+          });
+
+
+        this.validationError = false;
+      } else {
+        return;
       }
-      //console.log('ДО: ', this.items);
-      if(this.myEmail.length !== 0)
-        this.editValid(edit, numb, true)
+    }
+    //console.log('ДО: ', this.items);
+    if(this.myEmail.length !== 0)
+      this.editValid(edit, numb, true)
 
 
   }
@@ -452,134 +452,134 @@ export class MainPage {
    */
   sortCol(colForSorting, sortingOrder) { // Принимает два параметра: название столбца для сортироки и порядок (По возростанию или убыванию)
 
-      this.http.get('http://localhost:3000/main')
-        .subscribe(res =>
-        {
+    this.http.get('http://localhost:3000/main')
+      .subscribe(res =>
+      {
 
-      let itemsForSorting = JSON.parse(res.text()) || [];
+        let itemsForSorting = JSON.parse(res.text()) || [];
 
 
-      //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
+        //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
 
-      //this.parseItemsArticles();
+        //this.parseItemsArticles();
 
-          switch (colForSorting) {
-            case 'Number':
+        switch (colForSorting) {
+          case 'Number':
 
-              if (sortingOrder) { // Выясняем порядок сортировки
+            if (sortingOrder) { // Выясняем порядок сортировки
 
-                itemsForSorting.sort(function (itemA, itemB) {
-                  //console.log(Number(itemA.numb+1) > Number(itemB.numb+1))
-                  return Number(itemA.numb+1) > Number(itemB.numb+1);
-                })
-              } else {
-                itemsForSorting.sort(function (itemA, itemB) {
-                  return Number(itemA.numb+1) < Number(itemB.numb+1);
-                })
-              }
-              //this.makeNormalNumbers(itemsForSorting);
-              this.items = itemsForSorting;
-              break;
-            case 'Name': // Сортировка по имени
+              itemsForSorting.sort(function (itemA, itemB) {
+                //console.log(Number(itemA.numb+1) > Number(itemB.numb+1))
+                return Number(itemA.numb+1) > Number(itemB.numb+1);
+              })
+            } else {
+              itemsForSorting.sort(function (itemA, itemB) {
+                return Number(itemA.numb+1) < Number(itemB.numb+1);
+              })
+            }
+            //this.makeNormalNumbers(itemsForSorting);
+            this.items = itemsForSorting;
+            break;
+          case 'Name': // Сортировка по имени
 
-              this.sortDate = 0;
-              this.sortExpDate = 0;
-              this.sortPrice = 0;
-              this.sortWhoCrt = 0;
+            this.sortDate = 0;
+            this.sortExpDate = 0;
+            this.sortPrice = 0;
+            this.sortWhoCrt = 0;
 
-              if(++this.sortName == 1)
-                this.sortingStringFunc(itemsForSorting, true, 'nameOf');
-              else if (this.sortName == 2)
-                this.sortingStringFunc(itemsForSorting, false, 'nameOf');
-              else {
-                this.sortName = 0;
-                this.sortCol('Number', true);
-              }
-              this.items = itemsForSorting;
-              //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
-              break;
-            case 'CrDate': // Сортировка по дате создания
-
+            if(++this.sortName == 1)
+              this.sortingStringFunc(itemsForSorting, true, 'nameOf');
+            else if (this.sortName == 2)
+              this.sortingStringFunc(itemsForSorting, false, 'nameOf');
+            else {
               this.sortName = 0;
-              this.sortExpDate = 0;
-              this.sortPrice = 0;
-              this.sortWhoCrt = 0;
+              this.sortCol('Number', true);
+            }
+            this.items = itemsForSorting;
+            //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
+            break;
+          case 'CrDate': // Сортировка по дате создания
 
-              if(++this.sortDate == 1)
-                this.sortingDateFunc(itemsForSorting, true, 'date');
-              else if (this.sortDate == 2)
-                this.sortingDateFunc(itemsForSorting, false, 'date');
-              else {
-                this.sortDate = 0;
-                this.sortCol('Number', true);
-              }
-              this.items = itemsForSorting;
-              //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
-              break;
-            case 'ExpDate': // Сортировка по дате истечения срока годности
+            this.sortName = 0;
+            this.sortExpDate = 0;
+            this.sortPrice = 0;
+            this.sortWhoCrt = 0;
 
-              this.sortName = 0;
+            if(++this.sortDate == 1)
+              this.sortingDateFunc(itemsForSorting, true, 'date');
+            else if (this.sortDate == 2)
+              this.sortingDateFunc(itemsForSorting, false, 'date');
+            else {
               this.sortDate = 0;
-              this.sortPrice = 0;
-              this.sortWhoCrt = 0;
+              this.sortCol('Number', true);
+            }
+            this.items = itemsForSorting;
+            //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
+            break;
+          case 'ExpDate': // Сортировка по дате истечения срока годности
 
-              if(++this.sortExpDate == 1)
-                this.sortingDateFunc(itemsForSorting, true, 'expDate');
-              else if (this.sortExpDate == 2)
-                this.sortingDateFunc(itemsForSorting, false, 'expDate');
-              else {
-                this.sortExpDate = 0;
-                this.sortCol('Number', true);
-              }
-              this.items = itemsForSorting;
-              //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
-              break;
-            case 'Price':
+            this.sortName = 0;
+            this.sortDate = 0;
+            this.sortPrice = 0;
+            this.sortWhoCrt = 0;
 
-              this.sortName = 0;
-              this.sortDate = 0;
+            if(++this.sortExpDate == 1)
+              this.sortingDateFunc(itemsForSorting, true, 'expDate');
+            else if (this.sortExpDate == 2)
+              this.sortingDateFunc(itemsForSorting, false, 'expDate');
+            else {
               this.sortExpDate = 0;
-              this.sortWhoCrt = 0;
+              this.sortCol('Number', true);
+            }
+            this.items = itemsForSorting;
+            //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
+            break;
+          case 'Price':
 
-              if(++this.sortPrice == 1)
-                itemsForSorting.sort(function (itemA, itemB) {
-                  return Number(itemA.price) > Number(itemB.price);
-                });
-              else if (this.sortPrice == 2)
-                itemsForSorting.sort(function (itemA, itemB) {
-                  return Number(itemA.price) < Number(itemB.price);
-                });
-              else {
-                this.sortPrice = 0;
-                this.sortCol('Number', true);
-                break;
-              }
-              this.items = itemsForSorting;
-              //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
-              break;
-            case 'WhoCrt':
+            this.sortName = 0;
+            this.sortDate = 0;
+            this.sortExpDate = 0;
+            this.sortWhoCrt = 0;
 
-              this.sortName = 0;
-              this.sortDate = 0;
-              this.sortExpDate = 0;
+            if(++this.sortPrice == 1)
+              itemsForSorting.sort(function (itemA, itemB) {
+                return Number(itemA.price) > Number(itemB.price);
+              });
+            else if (this.sortPrice == 2)
+              itemsForSorting.sort(function (itemA, itemB) {
+                return Number(itemA.price) < Number(itemB.price);
+              });
+            else {
               this.sortPrice = 0;
-
-              if(++this.sortWhoCrt == 1)
-                this.sortingStringFunc(itemsForSorting, true, 'whoCrt');
-              else if (this.sortWhoCrt == 2)
-                this.sortingStringFunc(itemsForSorting, false, 'whoCrt');
-              else {
-                this.sortWhoCrt = 0;
-                this.sortCol('Number', true);
-              }
-              this.items = itemsForSorting;
-              //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
+              this.sortCol('Number', true);
               break;
-          }
-          //this.items = itemsForSorting;
-          // this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
-          //location.reload(true);
-        });
+            }
+            this.items = itemsForSorting;
+            //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
+            break;
+          case 'WhoCrt':
+
+            this.sortName = 0;
+            this.sortDate = 0;
+            this.sortExpDate = 0;
+            this.sortPrice = 0;
+
+            if(++this.sortWhoCrt == 1)
+              this.sortingStringFunc(itemsForSorting, true, 'whoCrt');
+            else if (this.sortWhoCrt == 2)
+              this.sortingStringFunc(itemsForSorting, false, 'whoCrt');
+            else {
+              this.sortWhoCrt = 0;
+              this.sortCol('Number', true);
+            }
+            this.items = itemsForSorting;
+            //this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
+            break;
+        }
+        //this.items = itemsForSorting;
+        // this.http.post("http://localhost:3000/main", itemsForSorting).subscribe();
+        //location.reload(true);
+      });
 
   }
 

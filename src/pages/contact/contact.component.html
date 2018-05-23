@@ -1,14 +1,15 @@
 <ion-header class="interfaceHeader">
   <ion-navbar class="intNav">
     <ion-list col-lg-1 class="intList" (click)="itemTapped()" >Sign Out </ion-list>
+
     <ion-list col-lg-1 class="intList active">Contact</ion-list>
+
     <ion-list col-lg-1 class="intList" (click)="itemAbout()" >About</ion-list>
     <ion-list col-lg-1 class="intList" (click)="itemMain()" >Main</ion-list>
   </ion-navbar>
 </ion-header>
 
 <ion-content  padding row class="backContent">
-
     <ion-title  offset-lg-1 col-lg-5 col-md-6 col-sm-12 col-xs-12 class="contMarTop">
       <ion-card-title class="titInterface">
         CONTACT FORM
@@ -16,37 +17,32 @@
       <ion-list  class="borContact">
 
         <ion-item>
-          <ion-label floating>Name</ion-label>
-          <ion-input required name="myname" type="text" clearInput #name></ion-input>
+
+          <ion-label floating>Name </ion-label>
+          <ion-input required name="myname" type="text"  [(ngModel)]="nameUser" clearInput  #name></ion-input>
+
         </ion-item>
         <ion-item *ngIf="errorName" col-lg-12 col-md-6 class="errorMess">
           <p class="err">Name can not contain digits!</p>
         </ion-item>
-
-
-
-
         <ion-item>
-          <ion-label floating>Email</ion-label>
-          <ion-input required name="myemail" type="text" clearInput #email></ion-input>
+          <ion-label floating>Email </ion-label>
+          <ion-input required name="myemail"  type="text" clearInput [(ngModel)]="emailUser"  #email></ion-input>
+
         </ion-item>
         <ion-item *ngIf="errorEmail" col-lg-12 col-md-6 class="errorMess">
           <p class="err">E-mail is not valid!</p>
         </ion-item>
-
-
         <ion-item>
           <ion-label floating>Subject</ion-label>
-          <ion-input required name="subject" type="text" clearInput #subj></ion-input>
+          <ion-input required name="subject" type="text" clearInput  [(ngModel)]="subjectUser"  #subj></ion-input>
         </ion-item>
         <ion-item *ngIf="errorSubj" col-lg-12 col-md-6 class="errorMess">
           <p class="err">A topic can not consist of only digits!</p>
         </ion-item>
-
-
         <ion-item>
           <ion-label floating>Message</ion-label>
-          <ion-input required name="message" type="text" clearInput #mess></ion-input>
+          <ion-input required name="message" type="text" clearInput [(ngModel)]="messageUser"  #mess></ion-input>
         </ion-item>
         <ion-item *ngIf="errorMess" col-lg-12 col-md-6 class="errorMess">
           <p class="err">Message can not contain only numbers!</p>
@@ -79,21 +75,26 @@
             9870 St Vincent Place,
             Glasgow, DC 45 Fr 45.
           </p>
-           <p col-lg-5 col-md-5 class="textCont">
-            E-mail: mail@demolink.org
-            Telephone: +1 959 603 6035
-            FAX: + 1 504 889 9898
+           <p col-lg-6 col-md-6 class="textCont">
+            E-mail: vaslnko25@gmail.com
+            Telephone: +0958918771<br>
+            FAX: + 1 3604 8389 9638
           </p>
         </div>
 
       </ion-card-content>
     </ion-card>
-
 </ion-content>
 
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title class="intFooter">@2018 ProductInventory</ion-title>
+    <ion-title >@2018 ProductInventory</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-footer class="sentFooter" id="sentFooter" *ngIf="sentMess">
+  <ion-toolbar>
+    <ion-title class="sentFooter">Message sent</ion-title>
   </ion-toolbar>
 </ion-footer>

@@ -31,8 +31,8 @@ class Article {
 
 
 @Component({
-selector: 'about-component',
-templateUrl: 'about.component.html'
+  selector: 'about-component',
+  templateUrl: 'about.component.html'
 })
 export class AboutComponent {
 
@@ -273,7 +273,7 @@ export class AboutComponent {
 
         //this.parseItemsArticles();
 
-       // location.reload(true)
+        // location.reload(true)
       });
   }
 
