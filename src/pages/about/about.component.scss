@@ -1,8 +1,8 @@
 about-component {
   @import url('https://fonts.googleapis.com/css?family=Roboto');
-  font-family: 'Roboto';
+  font-family: "Nimbus Mono L";
   .modal {
-    font-family: "Roboto";
+    font-family: "Nimbus Mono L";
     position: absolute;
     top: 0;
     height: 100%;
@@ -59,7 +59,7 @@ about-component {
       display: inline-block;
     }
     ion-input {
-      font-family: 'Roboto';
+      font-family: "Nimbus Mono L";
       font-size: 16px;
       font-weight: 400;
       position: relative;
@@ -178,7 +178,7 @@ about-component {
       font-weight: bold;
     }
     ion-card-content {
-      font-family: "Roboto";
+      font-family: "Nimbus Mono L";
       img {
         float: right; /* Выравнивание по правому краю  */
         margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
@@ -211,7 +211,7 @@ about-component {
     display: inline-block;
     float: right;
     margin: 10px;
-    font-family: "Roboto";
+    font-family: "Nimbus Mono L";
     font-size: 20px;
     cursor: pointer;
     color: #000;
@@ -219,7 +219,7 @@ about-component {
   }
 
   .intList:hover {
-    font-family: "Roboto";
+    font-family: "Nimbus Mono L";
     display: inline-block;
     float: right;
     margin: 10px;
