@@ -108,12 +108,12 @@ contact-component {
   .titInterface {
     font-size: 30px;
     text-align: center;
-    font-family: 'Roboto';
+    font-family: 'Symbola';
     font-weight: 800;
   }
   .textAboutInf {
     text-align: justify;
-    font-size: 1.5em;
+    font-size: 18px;
     font-family: "Symbola";
     line-height: 1.5;
     font-weight: 400;
@@ -183,16 +183,15 @@ contact-component {
   }
 
   @keyframes anim {
-       0% {
-         opacity: 0;
-       }
-       50% {
-         opacity: 1;
-       }
-       100% {
-         opacity: 0;
-       }
-     }
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 }
-
 
