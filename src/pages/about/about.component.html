@@ -48,10 +48,10 @@
         What's new?
 
         <div *ngIf="!checkingEditing()" class="addNewBtn">
-          <button ion-button color="blue" *ngIf="!newArticle" (click)="createFormForNewArticle()">Add new's</button>
+          <button ion-button color="dark" *ngIf="!newArticle" (click)="createFormForNewArticle()">Add new's</button>
         </div>
         <div *ngIf="newArticle" class="addNewBtn">
-          <button ion-button color="blue" (click)="createFormForNewArticle(); addNewArticle(newTitleText, newArticleText)">Add new's</button>
+          <button ion-button color="dark" (click)="createFormForNewArticle(); addNewArticle(newTitleText, newArticleText)">Add new's</button>
         </div>
 
       </ion-card-title>
@@ -72,7 +72,15 @@
       <div class="myInput" *ngFor=" let article of articles; let i = index">
         <div *ngIf="!article.isEdit">
           <h4> {{article.artTitle}}</h4>
-          <a (click)="editingArticleOpen(article)">Edit <ion-icon name="build"></ion-icon></a> / <a (click)="deleteArticle(i)">Delete <ion-icon name="hammer"></ion-icon></a>
+
+          <button class="fixBtn" ion-button icon-only color="light" (click)="editingArticleOpen(article)" small>
+            <ion-icon name="build"></ion-icon>
+          </button>
+
+          <button class="fixBtn" ion-button icon-only color="danger" (click)="deleteArticle(i)" small>
+            <ion-icon name="hammer"></ion-icon>
+          </button>
+
           <p class="textAboutInf"> {{article.artText}} </p>
         </div>
 
@@ -88,7 +96,7 @@
           </ion-item>
 
           <ion-item>
-            <button id="editArt" ion-button color="blue" (click)="editThisArticle(article.artTitle, article.artText, i)">Edit article</button>
+            <button id="editArt" ion-button color="dark" (click)="editThisArticle(article.artTitle, article.artText, i)">Edit article</button>
           </ion-item>
         </div>
       </div>
@@ -101,7 +109,7 @@
       <ion-card-title class="titInterface">
         Our stocks
         <div class="addNewBtn">
-          <button ion-button color="blue" (click)="this.isNewPhoto = !this.isNewPhoto">Add photo</button>
+          <button ion-button color="dark" (click)="this.isNewPhoto = !this.isNewPhoto">Add photo</button>
         </div>
       </ion-card-title>
 
@@ -110,6 +118,7 @@
           <div class="slide">
             <div (click)="prevSld()" class="arrow left"><ion-icon name="ios-arrow-back-outline"></ion-icon></div>
             <div class="slidePh">
+
               <div class="onePhoto" *ngIf="photosArr[(i+1)*4-4] !== undefined">
                 <img class="slideImg" src="{{photosArr[(i+1)*4-4].url}}">
                 <div class="trash" (click)="deletePhoto((i+1)*4-4)"><ion-icon name="trash"></ion-icon></div>
@@ -129,13 +138,23 @@
                 <img class="slideImg" src="{{photosArr[(i+1)*4-1].url}}">
                 <div class="trash" (click)="deletePhoto((i+1)*4-1)"><ion-icon name="trash"></ion-icon></div>
               </div>
-
             </div>
             <div (click)="nextSld()" class="arrow right"><ion-icon name="ios-arrow-forward-outline"></ion-icon></div>
           </div>
         </ion-slide>
-      </ion-slides>
+        <ion-slide *ngIf="slidesCountArr.length == 0">
+          <div class="slide">
+            <div class="arrow left"></div>
+            <div class="slidePh">
+              <div class="onePhoto">
+                <img class="slideImg addNewPhoto" (click)="this.isNewPhoto = !this.isNewPhoto" src="https://image.freepik.com/free-icon/no-translate-detected_318-32580.jpg">
+              </div>
+            </div>
+            <div class="arrow right"></div>
 
+          </div>
+        </ion-slide>
+      </ion-slides>
     </ion-card-content>
   </ion-card>
 
@@ -144,7 +163,7 @@
       <ion-input placeholder="Enter URL" [(ngModel)]="photoURL"></ion-input>
       <div class="icon" (click)="isNewPhoto = !isNewPhoto"><ion-icon name="md-close" ></ion-icon></div>
       <ion-input type="file"></ion-input>
-      <button ion-button full color="blue" (click)="addNewPhoto(photoURL)">Add photo</button>
+      <button ion-button full color="dark" (click)="addNewPhoto(photoURL)">Add photo</button>
     </div>
   </div>
 

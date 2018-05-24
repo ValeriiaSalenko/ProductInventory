@@ -33,15 +33,15 @@ contact-component {
     color: #000;
     text-align: center;
   }
-  .active{
+
+  .intList:hover {
+    font-family: "Nimbus Mono L";
     display: inline-block;
     float: right;
     margin: 10px;
-    font-family: "Nimbus Mono L";
     font-size: 20px;
     cursor: pointer;
     color: #db4437;
-    text-align: center;
   }
 
   .header-md::after {
@@ -153,9 +153,7 @@ contact-component {
       }
     }
   }
-  .scroll-content{
-    padding: 0 !important;
-  }
+
   .sentFooter{
     background: #32db64;
     height: 70px;

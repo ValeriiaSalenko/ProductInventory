@@ -1,11 +1,10 @@
 about-component {
   @import url('https://fonts.googleapis.com/css?family=Roboto');
-  font-family: "Nimbus Mono L";
   .modal {
     font-family: "Nimbus Mono L";
     position: absolute;
     top: 0;
-    height: 100%;
+    height: 120%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9;
@@ -71,6 +70,10 @@ about-component {
   .myInput {
     width: 100%;
     padding-top: 10px;
+    .fixBtn {
+      width: 50px;
+      height: 20px;
+    }
     ion-textarea {
       resize: none;
       max-width: 100%;
@@ -110,16 +113,6 @@ about-component {
           flex-direction: row;
           justify-content: space-around;
           max-height: 210px;
-          //&:hover ~ .slideImg {
-          //  border: 1px solid #000000;
-          //  transform: scale(1.3);
-          //  opacity: .25;
-          //
-          //}
-          //
-          //&:hover {
-          //  display: block;
-          //}
           .onePhoto {
             border: 0;
             border-radius: 50%;
@@ -129,7 +122,6 @@ about-component {
             transition: all 0.5s ease;
             &:hover {
               transform: scale(1.3);
-              //border-radius: 45%;
             }
             .trash {
               opacity: 1;
@@ -148,14 +140,14 @@ about-component {
             }
             &:hover .slideImg {
               opacity: .25;
-              //-webkit-filter: blur(2px);
-              //-moz-filter: blur(2px);
-              //filter: blur(2px);
+            }
+            &:hover .addNewPhoto {
+              opacity: 1;
             }
             .slideImg {
               position: relative;
-              height: 200px;
-              width: 200px;
+              height: 175px;
+              width: 175px;
               -webkit-transition: all 0.5s ease;;
               -moz-transition: all 0.5s ease;;
               -o-transition: all 0.5s ease;;
@@ -163,6 +155,9 @@ about-component {
               //cursor: pointer;
               border-radius: 50%;
               border: 2px solid #666;
+            }
+            .addNewPhoto {
+              border: 0;
             }
           }
         }
@@ -186,10 +181,12 @@ about-component {
       p {
         margin-bottom: 8px;
         margin-top: 8px;
+        font-size: 16px;
+        text-align: justify;
       }
       h4 {
         margin-top: 8px;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bold;
         text-decoration: underline;
       }
@@ -240,7 +237,7 @@ about-component {
   .toolbar-title-md {
     text-align: center;
     color: #000;
-    font-size: 15px;
+    font-size: 18px;
   }
   ion-footer {
     position: fixed;

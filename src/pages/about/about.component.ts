@@ -200,9 +200,9 @@ export class AboutComponent {
 
   editThisArticle(titleText, articleText, i) {
 
+
     this.http.get('http://localhost:3000/articles')
-      .subscribe(res =>
-      {
+      .subscribe(res => {
         let artInJSON = res.text();
 
         let oldItems = JSON.parse(artInJSON) || [];
@@ -228,10 +228,12 @@ export class AboutComponent {
   }
 
   editingArticleOpen(article) {
-    for (let i = 0; i < this.articles.length; i++)
-      if (this.articles[i].isEdit == true)
-        return;
-    article.isEdit = !article.isEdit;
+    if(!this.newArticle) {
+      for (let i = 0; i < this.articles.length; i++)
+        if (this.articles[i].isEdit == true)
+          return;
+      article.isEdit = !article.isEdit;
+    }
   }
 
   prevSld() {
