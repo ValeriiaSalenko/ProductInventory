@@ -1,7 +1,9 @@
 <ion-header class="interfaceHeader">
   <ion-navbar class="intNav">
     <ion-list col-lg-1 class="intList" (click)="itemTapped()" >Sign Out </ion-list>
-    <ion-list col-lg-1 class="intList" (click)="itemContact()">Contact</ion-list>
+
+    <ion-list col-lg-1 class="intList active">Contact</ion-list>
+
     <ion-list col-lg-1 class="intList" (click)="itemAbout()" >About</ion-list>
     <ion-list col-lg-1 class="intList" (click)="itemMain()" >Main</ion-list>
   </ion-navbar>
@@ -15,8 +17,10 @@
       <ion-list  class="borContact">
 
         <ion-item>
+
           <ion-label floating>Name </ion-label>
           <ion-input required name="myname" type="text"  [(ngModel)]="nameUser" clearInput  #name></ion-input>
+
         </ion-item>
         <ion-item *ngIf="errorName" col-lg-12 col-md-6 class="errorMess">
           <p class="err">Name can not contain digits!</p>
@@ -24,6 +28,7 @@
         <ion-item>
           <ion-label floating>Email </ion-label>
           <ion-input required name="myemail"  type="text" clearInput [(ngModel)]="emailUser"  #email></ion-input>
+
         </ion-item>
         <ion-item *ngIf="errorEmail" col-lg-12 col-md-6 class="errorMess">
           <p class="err">E-mail is not valid!</p>
@@ -46,7 +51,6 @@
         <button class="contButton" color="dark" (click)="sendMes()" ion-button >SEND MESSAGE</button>
       </ion-list>
     </ion-title>
-
 
     <ion-card col-lg-5 col-md-5 col-sm-12 col-xs-12 offset-lg-1 class="contInformation">
       <ion-card-content class="alignment">
