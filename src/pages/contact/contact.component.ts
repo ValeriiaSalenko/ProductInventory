@@ -118,10 +118,10 @@ export class ContactComponent {
       let _this = this;
       setTimeout(() => _this.sentMess = false, 3000);
 
-      this.name.value = "";
-      this.email.value = "";
-      this.subj.value = "";
-      this.mess.value = "";
+      this.name.value = '';
+      this.email.value = '';
+      this.subj.value = '';
+      this.mess.value = '';
 
     }
   }
