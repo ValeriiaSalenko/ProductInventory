@@ -1,9 +1,4 @@
 contact-component {
-  @import url('https://fonts.googleapis.com/css?family=Roboto');
-  font-family: 'Roboto';
-  .active {
-    color: #db4438 !important;
-  }
 
   .toolbar-background {
     background-color: #fdefcf;
@@ -16,14 +11,12 @@ contact-component {
     background-repeat: no-repeat;
   }
 
-
-  .contMarTop {
-    display: inline-flex;
-    justify-content: center;
+  .contMarTop{
     padding: 0;
     height: 100%;
-    padding: 0 6% 0 0;
-    font-family: 'Roboto';
+    justify-content: center;
+    display: inline-block;
+    font-family: "Nimbus Mono L";
   }
 
   .back-button {
@@ -34,7 +27,7 @@ contact-component {
     display: inline-block;
     float: right;
     margin: 10px;
-    font-family: 'Roboto';
+    font-family: "Nimbus Mono L";
     font-size: 20px;
     cursor: pointer;
     color: #000;
@@ -42,7 +35,7 @@ contact-component {
   }
 
   .intList:hover {
-    font-family: 'Roboto';
+    font-family: "Nimbus Mono L";
     display: inline-block;
     float: right;
     margin: 10px;
@@ -62,11 +55,12 @@ contact-component {
   }
 
   .toolbar-title-md {
-    font-family: "Roboto";
+    font-family: "Nimbus Mono L";
     text-align: center;
     color: #000;
     font-size: 20px;
     border-radius: 10px;
+
   }
 
   .borContact {
@@ -74,7 +68,6 @@ contact-component {
     border: 1px solid #000000;
     background: white;
   }
-
 
   .item-md{
     padding: 0;
@@ -85,48 +78,48 @@ contact-component {
     padding-left: 10px;
   }
 
-  .contButton {
+  .contButton{
     margin: 10px 0;
     width: 35%;
   }
-
-  .contInformation {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
+  .contInformation{
+    display:inline-block;
+    position: absolute;
     background: none;
     box-shadow: none;
-    padding: 0 0 0 6%;
+    padding: 0 0 0 10px;
     margin: 0;
+
   }
 
-  .alignment {
+  .alignment{
     display: flex;
     flex-direction: column;
+
   }
 
-  .titInterface {
+  .titInterface{
     font-size: 30px;
     text-align: center;
-    font-family: 'Symbola';
+    font-family: "Nimbus Mono L";
     font-weight: 800;
   }
-  .textAboutInf {
-    text-align: justify;
-    font-size: 18px;
+  .textAboutInf{
+    margin: 5px;
+    font-size: 20px;
     font-family: "Symbola";
     line-height: 1.5;
     font-weight: 400;
   }
 
-  .card-content {
+  .card-content{
     padding: 0;
   }
-  .cardFooter {
+  .cardFooter{
     display: flex;
     justify-content: space-between;
   }
-  .textCont {
+  .textCont{
     margin: 5px;
     font-size: 16px;
     font-family: "Symbola";
@@ -137,7 +130,6 @@ contact-component {
   .errorMess {
     .item-inner {
       border-bottom: none !important;
-
       .input-wrapper{
         max-height: 25px !important;
 
@@ -155,13 +147,12 @@ contact-component {
   }
 
   .item-inner {
-    .input-wrapper {
-      .label-md[floating] {
+    .input-wrapper{
+      .label-md[floating]{
         margin-top: 3px;
       }
     }
   }
-
 
   .sentFooter{
     background: #32db64;
@@ -193,5 +184,11 @@ contact-component {
       opacity: 0;
     }
   }
+
 }
+
+
+
+
+
 
